@@ -12,35 +12,21 @@
             <form id="formAuthentication" class="mb-3" action="{{route('login')}}" method="POST">
                 @csrf
                 <div class="mb-3">
-                    <label for="email" class="form-label">Username</label>
-                    <input
-                        type="text"
-                        class="form-control @error('nama') is-invalid @enderror"
-                        id="nama"
-                        value="{{old('nama')}}"
-                        name="nama"
-                        placeholder="Masukkan username Anda"
-                        autofocus
-                    />
+                    <div class="form-floating">
+                        <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" name="username" placeholder="Username Anda">
+                        <label for="username">Username</label>
+                    </div>
 
-                    @error('nama')
+                    @error('username')
                     <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                     @enderror
                 </div>
-                <div class="mb-3 form-password-toggle">
-                    <label class="form-label" for="password">Password</label>
-                    <div class="input-group input-group-merge">
-                        <input
-                            type="password"
-                            id="password"
-                            class="form-control @error('password') is-invalid @enderror"
-                            name="password"
-                            placeholder="Masukkan password Anda"
-                            aria-describedby="password"
-                        />
-                        <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                <div class="mb-4 form-password-toggle">
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" placeholder="Password Anda">
+                        <label for="password">Password</label>
                     </div>
 
                     @error('password')
@@ -48,13 +34,6 @@
                                 <strong>{{ $message }}</strong>
                             </span>
                     @enderror
-                </div>
-                <div class="mb-3">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="remember-me" name="remember"/>
-                        <label class="form-check-label"
-                               for="remember-me" {{ old('remember') ? 'checked' : '' }}> Remember Me </label>
-                    </div>
                 </div>
                 <div class="mb-3">
                     <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>

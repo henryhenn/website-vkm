@@ -23,4 +23,4 @@ Auth::routes(['register' => false]);
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 });
-Route::view('dashboard', 'dashboard.index')->name('dashboard');
+//Route::view('dashboard', 'dashboard.index')->name('dashboard');

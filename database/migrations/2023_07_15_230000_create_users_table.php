@@ -14,15 +14,16 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('nama', 50);
+            $table->string('username', 50);
             $table->string('nama_mandarin', 100)->nullable();
             $table->string('tempat_lahir', 50);
             $table->date('tanggal_lahir');
             $table->text('alamat');
             $table->string('telepon', 14);
-            $table->foreignId('golongan_darah_id')->constrained();
-            $table->foreignId('status_ketuhanan_id')->constrained();
-            $table->foreignId('status_vegetarian_id')->constrained();
-            $table->foreignId('status_qiu_dao_id')->constrained();
+            $table->foreignId('golongan_darah_id')->nullable()->constrained()->nullOnDelete();
+            $table->foreignId('status_ketuhanan_id')->nullable()->constrained()->nullOnDelete();
+            $table->foreignId('status_vegetarian_id')->nullable()->constrained()->nullOnDelete();
+            $table->foreignId('status_qiu_dao_id')->nullable()->constrained()->nullOnDelete();
             $table->string('foto');
             $table->string('password');
             $table->rememberToken();

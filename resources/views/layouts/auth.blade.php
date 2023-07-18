@@ -61,6 +61,12 @@
     </div>
 </div>
 
+<script>
+    document.addEventListener("contextmenu", (event) => {
+        event.preventDefault();
+    });
+</script>
+
 <script src="{{asset('sneat/assets/vendor/libs/jquery/jquery.js')}}"></script>
 <script src="{{asset('sneat/assets/vendor/libs/popper/popper.js')}}"></script>
 <script src="{{asset('sneat/assets/vendor/js/bootstrap.js')}}"></script>
