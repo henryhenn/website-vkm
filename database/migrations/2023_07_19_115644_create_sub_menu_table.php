@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('acara', function (Blueprint $table) {
+        Schema::create('sub_menu', function (Blueprint $table) {
             $table->id();
-            $table->string('acara', 200)->nullable();
-            $table->date('tgl')->nullable();
-            $table->boolean('active')->nullable();
-            $table->string('image')->nullable();
-            $table->string('user_added', 100)->nullable();
+            $table->foreignId('menu_id')->constrained('menu');
+            $table->string('sub_menu', 128);
+            $table->string('url', 128);
+            $table->string('icon', 128);
+            $table->boolean('active');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('acara');
+        Schema::dropIfExists('sub_menu');
     }
 };

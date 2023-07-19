@@ -13,21 +13,25 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('nama', 50);
-            $table->string('username', 50);
-            $table->string('nama_mandarin', 100)->nullable();
-            $table->string('tempat_lahir', 50);
-            $table->date('tanggal_lahir');
-            $table->text('alamat');
-            $table->string('telepon', 14);
-            $table->foreignId('golongan_darah_id')->nullable()->constrained()->nullOnDelete();
-            $table->foreignId('status_ketuhanan_id')->nullable()->constrained()->nullOnDelete();
-            $table->foreignId('status_vegetarian_id')->nullable()->constrained()->nullOnDelete();
-            $table->foreignId('status_qiu_dao_id')->nullable()->constrained()->nullOnDelete();
-            $table->string('foto');
-            $table->string('password');
-            $table->rememberToken();
+            $table->string('nama_indo', 100)->nullable();
+            $table->string('nama_mandarin_hanzi', 100)->nullable()->charset('utf8')->collation('utf8_unicode_ci');
+            $table->string('nama_mandarin_pinyin', 100)->nullable();
+            $table->string('tempat_lahir', 50)->nullable();
+            $table->date('tgl_lahir')->nullable();
+            $table->text('alamat')->nullable();
+            $table->string('telp', 20)->nullable();
+            $table->integer('gol_darah')->nullable();
+            $table->integer('status_ketuhanan')->nullable();
+            $table->integer('status_vegetarian')->nullable();
+            $table->integer('status_qiu_dao')->nullable();
+            $table->string('username', 50)->nullable();
+            $table->string('password')->nullable();
+            $table->boolean('reset_pass')->nullable();
+            $table->string('image')->nullable();
+            $table->boolean('active')->nullable();
+            $table->string('user_add', 100)->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

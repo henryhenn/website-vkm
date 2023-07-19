@@ -11,13 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('acara', function (Blueprint $table) {
+        Schema::create('menu', function (Blueprint $table) {
             $table->id();
-            $table->string('acara', 200)->nullable();
-            $table->date('tgl')->nullable();
-            $table->boolean('active')->nullable();
-            $table->string('image')->nullable();
-            $table->string('user_added', 100)->nullable();
+            $table->string('menu', 50);
             $table->timestamps();
         });
     }
@@ -27,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('acara');
+        Schema::dropIfExists('menu');
     }
 };
