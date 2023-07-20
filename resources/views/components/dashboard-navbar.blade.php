@@ -15,7 +15,7 @@
             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                     <div class="avatar">
-                        <img src="{{asset(auth()->user()->foto)}}" alt="{{auth()->user()->nama}}"
+                        <img src="{{asset(auth()->user()->image)}}" alt="{{auth()->user()->nama_indo}}"
                              class="w-px-40 h-auto rounded-circle"/>
                     </div>
                 </a>
@@ -25,12 +25,12 @@
                             <div class="d-flex">
                                 <div class="flex-shrink-0 me-3">
                                     <div class="avatar">
-                                        <img src="{{asset(auth()->user()->foto)}}" alt="{{auth()->user()->nama}}"
+                                        <img src="{{asset(auth()->user()->image)}}" alt="{{auth()->user()->nama_indo}}"
                                              class="w-px-40 h-auto rounded-circle"/>
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">
-                                    <span class="fw-semibold d-block">{{auth()->user()->nama}}</span>
+                                    <span class="fw-semibold d-block">{{auth()->user()->nama_indo}}</span>
                                     <small class="text-muted">Admin</small>
                                 </div>
                             </div>
@@ -40,9 +40,9 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="{{route('profil.index')}}">
                             <i class="bx bx-user me-2"></i>
-                            <span class="align-middle">Profile Saya</span>
+                            <span class="align-middle">Profil Saya</span>
                         </a>
                     </li>
                     <li>

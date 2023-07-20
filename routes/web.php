@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProfilController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -24,5 +24,9 @@ Auth::routes(['register' => false]);
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 
-    Route::resource('profile', ProfileController::class);
+    Route::resource('profil', ProfilController::class)->only('index', 'edit', 'update');
+
+//  Load backend components
+    Route::view('render-dashboard-sidebar', 'components.dashboard-sidebar');
+    Route::view('render-dashboard-navbar', 'components.dashboard-navbar');
 });

@@ -43,6 +43,6 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
-        'tanggal_lahir' => 'date:D - m - Y'
+        'tgl_lahir' => 'date:d-M-Y'
     ];
 }
