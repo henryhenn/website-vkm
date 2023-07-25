@@ -18,5 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(MasterValueSeeder::class);
         $this->call(SubMenuSeeder::class);
         $this->call(TahunImlekSeeder::class);
+        $this->call(AcaraSeeder::class);
+        $this->call(RitualSeeder::class);
     }
 }
