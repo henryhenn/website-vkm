@@ -14,7 +14,7 @@
                 <div class="mb-3">
                     <div class="form-floating">
                         <input type="text" class="form-control @error('username') is-invalid @enderror" id="username"
-                               name="username" placeholder="Username Anda" autofocus>
+                               name="username" placeholder=" " autofocus>
                         <label for="username">Username</label>
 
                         @error('username')
@@ -27,7 +27,7 @@
                 <div class="mb-4">
                     <div class="form-floating mb-3">
                             <input type="password" class="form-control @error('password') is-invalid @enderror"
-                                   id="password" name="password" placeholder="Password Anda">
+                                   id="password" name="password" placeholder=" ">
                         <label for="password">Password</label>
                         @error('password')
                         <span class="invalid-feedback" role="alert">

@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('kondisi', 100);
             $table->string('desc', 100);
             $table->boolean('active');
+            $table->string('user_add', 100)->nullable();
+            $table->string('user_update', 100)->nullable();
             $table->timestamps();
         });
     }

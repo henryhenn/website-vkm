@@ -27,7 +27,8 @@ return new class extends Migration
             $table->string('penanggung')->nullable();
             $table->string('pandita')->nullable();
             $table->integer('amal')->nullable();
-            $table->string('user_added', 100)->nullable();
+            $table->string('user_add', 100)->nullable();
+            $table->string('user_update', 100)->nullable();
             $table->timestamps();
         });
     }

@@ -57,7 +57,7 @@
 <div class="layout-wrapper layout-content-navbar">
     <div class="layout-container">
         <!-- Menu -->
-        <div id="dashboard-sidebar"></div>
+        <x-dashboard-sidebar/>
         <!-- / Menu -->
 
         <!-- Layout container -->

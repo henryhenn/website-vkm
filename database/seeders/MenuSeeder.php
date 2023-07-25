@@ -14,23 +14,11 @@ class MenuSeeder extends Seeder
     public function run(): void
     {
         DB::table('menu')->insert([
-            'menu' => 'Admin'
-        ]);
-
-        DB::table('menu')->insert([
-            'menu' => 'User'
-        ]);
-
-        DB::table('menu')->insert([
-            'menu' => 'Menu'
-        ]);
-
-        DB::table('menu')->insert([
-            'menu' => 'Data'
-        ]);
-
-        DB::table('menu')->insert([
-            'menu' => 'Lagu'
+            ['menu' => 'Admin', 'role_id' => 1],
+            ['menu' => 'User', 'role_id' => 2],
+            ['menu' => 'Menu', 'role_id' => null],
+            ['menu' => 'Data', 'role_id' => null],
+            ['menu' => 'Lagu', 'role_id' => null],
         ]);
     }
 }

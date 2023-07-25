@@ -14,6 +14,9 @@ return new class extends Migration
         Schema::create('menu', function (Blueprint $table) {
             $table->id();
             $table->string('menu', 50);
+            $table->foreignId('role_id')->nullable()->constrained();
+            $table->string('user_add', 100)->nullable();
+            $table->string('user_update', 100)->nullable();
             $table->timestamps();
         });
     }

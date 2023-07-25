@@ -9,13 +9,26 @@
     </div>
 
     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+        <ul class="navbar-nav flex-row align-items-center">
+            <li class="menu-item {{request()->routeIs('dashboard') || request()->routeIs('profil.*') ? 'text-primary' : 'text-dark'}}">
+                <a href="{{route('dashboard')}}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                    <div data-i18n="Analytics">Dashboard</div>
+                </a>
+            </li>
+        </ul>
+
 
         <ul class="navbar-nav flex-row align-items-center ms-auto">
+            <li class="menu-item me-5">
+                {{date('D, d M Y')}}
+            </li>
             <!-- User -->
             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                     <div class="avatar">
-                        <img src="{{asset(auth()->user()->image)}}" alt="{{auth()->user()->nama_indo}}"
+                        <img src="{{asset(auth()->user()->image ?? '/img/admin.jpeg')}}"
+                             alt="{{auth()->user()->nama_indo}}"
                              class="w-px-40 h-auto rounded-circle"/>
                     </div>
                 </a>
@@ -25,7 +38,8 @@
                             <div class="d-flex">
                                 <div class="flex-shrink-0 me-3">
                                     <div class="avatar">
-                                        <img src="{{asset(auth()->user()->image)}}" alt="{{auth()->user()->nama_indo}}"
+                                        <img src="{{asset(auth()->user()->image ?? '/img/admin.jpeg')}}"
+                                             alt="{{auth()->user()->nama_indo}}"
                                              class="w-px-40 h-auto rounded-circle"/>
                                     </div>
                                 </div>

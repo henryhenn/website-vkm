@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProfilRequest;
+use App\Http\Requests\AnggotaRequest;
 use Illuminate\Support\Facades\DB;
 
 class ProfilController extends Controller
@@ -27,7 +27,7 @@ class ProfilController extends Controller
         return view('profil.edit', compact('gol_darah', 'status_ketuhanan', 'status_qiu_dao'));
     }
 
-    public function update(ProfilRequest $request)
+    public function update(AnggotaRequest $request)
     {
         DB::table('users')
             ->where('id', auth()->id())

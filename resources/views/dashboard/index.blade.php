@@ -1,3 +1,4 @@
+@php use function App\Helpers\convert_date; @endphp
 @extends('layouts.app', ['title' => 'Dashboard'])
 
 @section('content')
@@ -7,18 +8,18 @@
                 <div class="d-flex align-items-end row">
                     <div class="col-sm-7">
                         <div class="card-body">
-                            <h5 class="card-title text-primary">Selamat datang kembali, {{auth()->user()->nama_indo}}!</h5>
+                            <h5 class="card-title text-primary">Selamat datang kembali, {{auth()->user()->nama_indo}}
+                                !</h5>
                             <p class="mb-4">
-                                You have done <span class="fw-bold">72%</span> more sales today. Check
-                                your new badge in
-                                your profile.
+                                Dalam membina harus senantiasa merendah hati. Hindari berebut dan bertikai. Inilah
+                                sumber kedamaian abadi.
                             </p>
                         </div>
                     </div>
                     <div class="col-sm-5 text-center text-sm-left">
                         <div class="card-body pb-0 px-0 px-md-4">
                             <img
-                                src="{{asset(auth()->user()->image)}}"
+                                src="{{asset(auth()->user()->image ?? '/img/admin.jpeg')}}"
                                 height="140"
                                 alt="{{auth()->user()->nama_indo}}"
                                 data-app-dark-img="illustrations/man-with-laptop-dark.png"
@@ -63,66 +64,20 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>
-                                        1
-                                    </td>
-                                    <td>Henry Salim</td>
-                                    <td>
-                                        081586043931
-                                    </td>
-                                    <td>
-                                        16-07-2023
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        1
-                                    </td>
-                                    <td>Henry Salim</td>
-                                    <td>
-                                        081586043931
-                                    </td>
-                                    <td>
-                                        16-07-2023
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        1
-                                    </td>
-                                    <td>Henry Salim</td>
-                                    <td>
-                                        081586043931
-                                    </td>
-                                    <td>
-                                        16-07-2023
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        1
-                                    </td>
-                                    <td>Henry Salim</td>
-                                    <td>
-                                        081586043931
-                                    </td>
-                                    <td>
-                                        16-07-2023
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        1
-                                    </td>
-                                    <td>Henry Salim</td>
-                                    <td>
-                                        081586043931
-                                    </td>
-                                    <td>
-                                        16-07-2023
-                                    </td>
-                                </tr>
+                                @forelse($anggota as $key => $data)
+                                    <tr>
+                                        <td>{{$key+1}}</td>
+                                        <td>{{$data->nama_indo}}</td>
+                                        <td>{{$data->telp}}</td>
+                                        <td>{{convert_date($data->created_at)}}</td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="4">
+                                            <h3 class="text-center fw-bold">Tidak ada data anggota terbaru</h3>
+                                        </td>
+                                    </tr>
+                                @endforelse
                                 </tbody>
                             </table>
                         </div>
@@ -201,11 +156,3 @@
         </div>
     </div>
 @endsection
-
-@push('scripts')
-    <script>
-        $(document).ready(function() {
-            $('#dashboard-sidebar').load('/render-dashboard-sidebar')
-        })
-    </script>
-@endpush

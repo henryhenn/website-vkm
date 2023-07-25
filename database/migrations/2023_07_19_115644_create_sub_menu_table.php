@@ -16,8 +16,10 @@ return new class extends Migration
             $table->foreignId('menu_id')->constrained('menu');
             $table->string('sub_menu', 128);
             $table->string('url', 128);
-            $table->string('icon', 128);
+            $table->string('icon', 128)->nullable();
             $table->boolean('active');
+            $table->string('user_add', 100)->nullable();
+            $table->string('user_update', 100)->nullable();
             $table->timestamps();
         });
     }

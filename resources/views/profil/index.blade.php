@@ -14,7 +14,7 @@
                     </div>
 
                     <div class="text-center">
-                        <img src="{{asset(auth()->user()->image)}}" alt="{{auth()->user()->nama_indo}}" width="200px"
+                        <img src="{{asset(auth()->user()->image ?? '/img/admin.jpeg')}}" alt="{{auth()->user()->nama_indo}}" width="200px"
                              class="rounded">
                     </div>
 
@@ -50,11 +50,3 @@
         </div>
     </div>
 @endsection
-
-@push('scripts')
-    <script>
-        $(document).ready(function() {
-            $('#dashboard-sidebar').load('/render-dashboard-sidebar')
-        })
-    </script>
-@endpush

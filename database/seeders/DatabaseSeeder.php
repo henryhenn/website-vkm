@@ -15,5 +15,8 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         $this->call(AlbumSeeder::class);
         $this->call(MenuSeeder::class);
+        $this->call(MasterValueSeeder::class);
+        $this->call(SubMenuSeeder::class);
+        $this->call(TahunImlekSeeder::class);
     }
 }

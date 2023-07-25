@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('tahun_imlek2')->nullable();
             $table->string('nama_tahun1')->nullable();
             $table->string('nama_tahun2')->nullable();
+            $table->string('user_add', 100)->nullable();
+            $table->string('user_update', 100)->nullable();
             $table->timestamps();
         });
     }

@@ -17,7 +17,8 @@ return new class extends Migration
             $table->foreignId('album_id')->nullable()->constrained('album');
             $table->integer('lagu')->nullable();
             $table->integer('teks')->nullable();
-            $table->string('user_added')->nullable();
+            $table->string('user_add', 100)->nullable();
+            $table->string('user_update', 100)->nullable();
             $table->timestamps();
         });
     }

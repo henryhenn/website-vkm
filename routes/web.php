@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\ProfilController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('landing');
 });
 
 Auth::routes(['register' => false]);
@@ -25,8 +26,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 
     Route::resource('profil', ProfilController::class)->only('index', 'edit', 'update');
+    Route::resource('anggota', AnggotaController::class)->only('index', 'store', 'update');
 
-//  Load backend components
-    Route::view('render-dashboard-sidebar', 'components.dashboard-sidebar');
-    Route::view('render-dashboard-navbar', 'components.dashboard-navbar');
+//    jQuery Routes
+    Route::post('get-status', [AnggotaController::class, 'getStatus']);
+    Route::get('get-anggota', [AnggotaController::class, 'getAnggota']);
+    Route::get('get-anggota/{id}', [AnggotaController::class, 'getAnggotaById']);
 });

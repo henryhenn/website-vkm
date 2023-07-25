@@ -14,15 +14,9 @@ class AlbumSeeder extends Seeder
     public function run(): void
     {
         DB::table('album')->insert([
-            'nama' => 'Pemuda Maitreya 1'
-        ]);
-
-        DB::table('album')->insert([
-            'nama' => 'Pemuda Maitreya 2'
-        ]);
-
-        DB::table('album')->insert([
-            'nama' => 'Pemuda Maitreya 3'
+            ['nama' => 'Pemuda Maitreya 1'],
+            ['nama' => 'Pemuda Maitreya 2'],
+            ['nama' => 'Pemuda Maitreya 3'],
         ]);
     }
 }

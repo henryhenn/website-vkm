@@ -23,7 +23,8 @@ return new class extends Migration
             $table->text('sujud1')->nullable();
             $table->text('sujud2')->nullable();
             $table->text('note')->nullable();
-            $table->string('user_modify', 100)->nullable();
+            $table->string('user_add', 100)->nullable();
+            $table->string('user_update', 100)->nullable();
             $table->timestamps();
         });
     }

@@ -17,7 +17,9 @@ return new class extends Migration
             $table->date('tgl')->nullable();
             $table->boolean('active')->nullable();
             $table->string('image')->nullable();
-            $table->string('user_added', 100)->nullable();
+            $table->string('tempat')->nullable();
+            $table->string('user_add', 100)->nullable();
+            $table->string('user_update', 100)->nullable();
             $table->timestamps();
         });
     }

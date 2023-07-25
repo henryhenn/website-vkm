@@ -257,11 +257,3 @@
         </div>
     </div>
 @endsection
-
-@push('scripts')
-    <script>
-        $(document).ready(function () {
-            $('#dashboard-sidebar').load('/render-dashboard-sidebar')
-        })
-    </script>
-@endpush
