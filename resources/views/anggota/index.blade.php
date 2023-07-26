@@ -14,13 +14,13 @@
                             type="button"
                             class="btn btn-primary"
                             data-bs-toggle="modal"
-                            data-bs-target="#modalCenter"
+                            data-bs-target="#tambahAnggotaModal"
                         >
                             Tambah Anggota Baru
                         </button>
 
                         <!-- Modal -->
-                        <div class="modal fade" id="modalCenter" tabindex="-1" aria-hidden="true">
+                        <div class="modal fade" id="tambahAnggotaModal" tabindex="-1" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -281,21 +281,28 @@
                                                         <i class="bx bx-user-plus"></i>
                                                     </button>
                                                 @endif
-                                                <a href="" class="badge bg-label-primary">
+                                                <a href="{{route('anggota.show', $data->id)}}" class="badge bg-label-primary">
                                                     <i class="bx bx-show"></i>
                                                 </a>
                                                 <button id="showModal"
                                                         data-bs-toggle="modal"
-                                                        data-bs-target="#anggotaModal"
+                                                        data-bs-target="#tambahAnggotaModal"
                                                         onclick=""
-                                                        class="badge mx-2 bg-label-warning cursor-pointer border-0">
+                                                        class="badge ms-2 bg-label-warning cursor-pointer border-0">
                                                     <i class="bx bx-edit"></i>
+                                                </button>
+                                                <button id="showModal"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#permissionModal"
+                                                        onclick=""
+                                                        class="badge mx-2 bg-label-info cursor-pointer border-0">
+                                                    <i class="bx bx-cog"></i>
                                                 </button>
                                                 <button id="showModal"
                                                         data-bs-toggle="modal"
                                                         data-bs-target="#anggotaModal"
                                                         onclick=""
-                                                        class="badge mx-2 bg-label-danger cursor-pointer border-0">
+                                                        class="badge bg-label-danger cursor-pointer border-0">
                                                     <i class="bx bx-trash"></i>
                                                 </button>
                                             </div>

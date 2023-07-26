@@ -30,6 +30,13 @@ class AnggotaController extends Controller
         return back()->with('message', 'Anggota berhasil ditambahkan!');
     }
 
+    public function show(string $id)
+    {
+        $anggota = User::findOrFail($id);
+
+        return view('anggota.detail', compact('anggota'));
+    }
+
     public function update(AnggotaRequest $request, string $id)
     {
         $user = User::query()->findOrFail($id);
@@ -61,7 +68,7 @@ class AnggotaController extends Controller
     public function getAnggotaById(string $id)
     {
         $anggota = DB::table('users')
-            ->select('id', 'nama_indo')
+            ->select("*")
             ->where('id', $id)
             ->first();
 

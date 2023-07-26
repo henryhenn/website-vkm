@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AnggotaRequest;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 
 class ProfilController extends Controller

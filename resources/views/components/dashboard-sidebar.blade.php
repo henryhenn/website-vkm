@@ -18,7 +18,7 @@
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Admin</span>
         </li>
-        <li class="menu-item {{request()->routeIs('anggota.index') ? 'active' : ''}}">
+        <li class="menu-item {{request()->routeIs('anggota.*') ? 'active' : ''}}">
             <a href="{{route('anggota.index')}}" class="menu-link">
                 <div data-i18n="Account">Daftar Anggota</div>
             </a>

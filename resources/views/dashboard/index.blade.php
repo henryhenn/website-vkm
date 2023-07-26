@@ -10,10 +10,7 @@
                         <div class="card-body">
                             <h5 class="card-title text-primary">Selamat datang kembali, {{auth()->user()->nama_indo}}
                                 !</h5>
-                            <p class="mb-4">
-                                Dalam membina harus senantiasa merendah hati. Hindari berebut dan bertikai. Inilah
-                                sumber kedamaian abadi.
-                            </p>
+                            <p class="mb-4" id="quote"></p>
                         </div>
                     </div>
                     <div class="col-sm-5 text-center text-sm-left">
@@ -156,3 +153,22 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                type: 'get',
+                url: 'get-user-quote',
+                dataType: 'json',
+                success: function ({data}) {
+                    if (data !== null) {
+                        $("#quote").append(data.quotes)
+                    } else {
+                        $("#quote").append('Tidak ada quotes terakhir')
+                    }
+                }
+            })
+        })
+    </script>
+@endpush
