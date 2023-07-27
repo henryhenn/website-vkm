@@ -1,4 +1,4 @@
-@php use function App\Helpers\convert_date; @endphp
+@php use function App\Helpers\convert_date;use function App\Helpers\convert_date_with_time; @endphp
 @extends('layouts.app', ['title' => 'Daftar Anggota'])
 
 @section('content')
@@ -40,7 +40,7 @@
                                                     <div class="form-floating">
                                                         <input
                                                             type="text"
-                                                            class="form-control @error('nama_indo') is_invalid @enderror"
+                                                            class="form-control"
                                                             id="nama_indo"
                                                             name="nama_indo"
                                                             value="{{old('nama_indo')}}"
@@ -49,9 +49,6 @@
                                                         />
                                                         <label for="nama_indo">Nama Indonesia</label>
 
-                                                        @error('nama_indo')
-                                                        <span class="invalid-feedback">{{$message}}</span>
-                                                        @enderror
                                                     </div>
                                                 </div>
                                             </div>
@@ -60,7 +57,7 @@
                                                     <div class="form-floating">
                                                         <input
                                                             type="text"
-                                                            class="form-control @error('nama_mandarin_hanzi') is_invalid @enderror"
+                                                            class="form-control"
                                                             id="nama_mandarin_hanzi"
                                                             name="nama_mandarin_hanzi"
                                                             value="{{old('nama_mandarin_hanzi')}}"
@@ -68,17 +65,13 @@
                                                             aria-describedby="nama_mandarin_hanzi"
                                                         />
                                                         <label for="nama_mandarin_hanzi">Nama Mandarin (Hanzi)</label>
-
-                                                        @error('nama_mandarin_hanzi')
-                                                        <span class="invalid-feedback">{{$message}}</span>
-                                                        @enderror
                                                     </div>
                                                 </div>
                                                 <div class="col mb-3">
                                                     <div class="form-floating">
                                                         <input
                                                             type="text"
-                                                            class="form-control @error('nama_mandarin_pinyin') is_invalid @enderror"
+                                                            class="form-control"
                                                             id="nama_mandarin_pinyin"
                                                             name="nama_mandarin_pinyin"
                                                             value="{{old('nama_mandarin_pinyin')}}"
@@ -86,10 +79,6 @@
                                                             aria-describedby="nama_mandarin_pinyin"
                                                         />
                                                         <label for="nama_mandarin_pinyin">Nama Mandarin (Pinyin)</label>
-
-                                                        @error('nama_mandarin_pinyin')
-                                                        <span class="invalid-feedback">{{$message}}</span>
-                                                        @enderror
                                                     </div>
                                                 </div>
                                             </div>
@@ -98,7 +87,7 @@
                                                     <div class="form-floating">
                                                         <input
                                                             type="text"
-                                                            class="form-control @error('tempat_lahir') is_invalid @enderror"
+                                                            class="form-control"
                                                             id="tempat_lahir"
                                                             name="tempat_lahir"
                                                             value="{{old('tempat_lahir')}}"
@@ -106,17 +95,13 @@
                                                             aria-describedby="tempat_lahir"
                                                         />
                                                         <label for="tempat_lahir">Tempat Lahir</label>
-
-                                                        @error('tempat_lahir')
-                                                        <span class="invalid-feedback">{{$message}}</span>
-                                                        @enderror
                                                     </div>
                                                 </div>
                                                 <div class="col mb-3">
                                                     <div class="form-floating">
                                                         <input
                                                             type="date"
-                                                            class="form-control @error('tgl_lahir') is_invalid @enderror"
+                                                            class="form-control"
                                                             id="tgl_lahir"
                                                             name="tgl_lahir"
                                                             value="{{old('tgl_lahir')}}"
@@ -124,10 +109,6 @@
                                                             aria-describedby="tgl_lahir"
                                                         />
                                                         <label for="tgl_lahir">Tanggal Lahir</label>
-
-                                                        @error('tgl_lahir')
-                                                        <span class="invalid-feedback">{{$message}}</span>
-                                                        @enderror
                                                     </div>
                                                 </div>
                                             </div>
@@ -135,17 +116,13 @@
                                                 <div class="col mb-3">
                                                     <div class="form-floating">
                                                 <textarea
-                                                    class="form-control @error('alamat') is_invalid @enderror"
+                                                    class="form-control"
                                                     id="alamat"
                                                     name="alamat"
                                                     placeholder=" "
                                                     aria-describedby="alamat"
                                                 >{{old('alamat')}}</textarea>
                                                         <label for="alamat">Alamat</label>
-
-                                                        @error('alamat')
-                                                        <span class="invalid-feedback">{{$message}}</span>
-                                                        @enderror
                                                     </div>
                                                 </div>
                                             </div>
@@ -154,7 +131,7 @@
                                                     <div class="form-floating">
                                                         <input
                                                             type="text"
-                                                            class="form-control @error('telp') is_invalid @enderror"
+                                                            class="form-control"
                                                             id="telp"
                                                             name="telp"
                                                             placeholder=" "
@@ -162,45 +139,35 @@
                                                             aria-describedby="telp"
                                                         >
                                                         <label for="telp">No. Telepon</label>
-
-                                                        @error('telp')
-                                                        <span class="invalid-feedback">{{$message}}</span>
-                                                        @enderror
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row g-2">
                                                 <div class="col mb-3">
                                                     <select
-                                                        class="form-control @error('gol_darah') is_invalid @enderror"
+                                                        class="form-control"
                                                         id="gol_darah"
                                                         name="gol_darah"
                                                         aria-describedby="gol_darah"
                                                     >
                                                         <option value="" disabled selected>--GOL DARAH--</option>
                                                     </select>
-                                                    @error('gol_darah')
-                                                    <span class="invalid-feedback">{{$message}}</span>
-                                                    @enderror
                                                 </div>
                                                 <div class="col mb-3">
                                                     <select
-                                                        class="form-control @error('status_ketuhanan') is_invalid @enderror"
+                                                        class="form-control"
                                                         id="status_ketuhanan"
                                                         name="status_ketuhanan"
                                                         aria-describedby="status_ketuhanan"
                                                     >
                                                         <option value="" disabled selected>--STATUS KETUHANAN--</option>
                                                     </select>
-                                                    @error('status_ketuhanan')
-                                                    <span class="invalid-feedback">{{$message}}</span>
-                                                    @enderror
                                                 </div>
                                             </div>
                                             <div class="row g-2">
                                                 <div class="col mb-3">
                                                     <select
-                                                        class="form-control @error('status_vegetarian') is_invalid @enderror"
+                                                        class="form-control"
                                                         id="status_vegetarian"
                                                         name="status_vegetarian"
                                                         aria-describedby="status_vegetarian"
@@ -208,22 +175,16 @@
                                                         <option value="" disabled selected>--STATUS VEGETARIAN--
                                                         </option>
                                                     </select>
-                                                    @error('status_vegetarian')
-                                                    <span class="invalid-feedback">{{$message}}</span>
-                                                    @enderror
                                                 </div>
                                                 <div class="col mb-3">
                                                     <select
-                                                        class="form-control @error('status_qiu_dao') is_invalid @enderror"
+                                                        class="form-control"
                                                         id="status_qiu_dao"
                                                         name="status_qiu_dao"
                                                         aria-describedby="status_qiu_dao"
                                                     >
                                                         <option value="" disabled selected>--STATUS QIU DAO--</option>
                                                     </select>
-                                                    @error('status_qiu_dao')
-                                                    <span class="invalid-feedback">{{$message}}</span>
-                                                    @enderror
                                                 </div>
                                             </div>
                                         </div>
@@ -263,31 +224,35 @@
                                     <tr>
                                         <td id="anggotaId">{{$data->id}}</td>
                                         <td>{{$data->nama_indo}}</td>
-                                        <td>{{$data->nama_mandarin_hanzi}} | {{$data->nama_mandarin_pinyin}}</td>
+                                        <td>
+                                            {{$data->nama_mandarin_hanzi}}
+                                            <p>{{$data->nama_mandarin_pinyin}}</p>
+                                        </td>
                                         <td>{{$data->telp}}</td>
                                         <td>
                                             <span
                                                 class="badge bg-label-{{$data->active ? 'success' : 'danger'}}">{{$data->active ? 'Aktif' : 'Non-aktif'}}</span>
                                         </td>
-                                        <td>{{convert_date($data->created_at)}}</td>
+                                        <td>{{convert_date_with_time($data->created_at)}}</td>
                                         <td>
                                             <div class="d-flex">
                                                 @if(!$data->active)
                                                     <button id="showModal"
                                                             data-bs-toggle="modal"
                                                             data-bs-target="#anggotaModal"
-                                                            onclick="getAnggotaById({{$data->id}})"
+                                                            onclick="getAnggotaById('add', {{$data->id}})"
                                                             class="badge bg-label-success me-2 cursor-pointer border-0">
                                                         <i class="bx bx-user-plus"></i>
                                                     </button>
                                                 @endif
-                                                <a href="{{route('anggota.show', $data->id)}}" class="badge bg-label-primary">
+                                                <a href="{{route('anggota.show', $data->id)}}"
+                                                   class="badge bg-label-primary">
                                                     <i class="bx bx-show"></i>
                                                 </a>
                                                 <button id="showModal"
                                                         data-bs-toggle="modal"
-                                                        data-bs-target="#tambahAnggotaModal"
-                                                        onclick=""
+                                                        onclick="getAnggotaById('edit', {{$data->id}})"
+                                                        data-bs-target="#editAnggotaModal"
                                                         class="badge ms-2 bg-label-warning cursor-pointer border-0">
                                                     <i class="bx bx-edit"></i>
                                                 </button>
@@ -300,8 +265,8 @@
                                                 </button>
                                                 <button id="showModal"
                                                         data-bs-toggle="modal"
-                                                        data-bs-target="#anggotaModal"
-                                                        onclick=""
+                                                        data-bs-target="#deleteAnggotaModal"
+                                                        onclick="getAnggotaById('delete', {{$data->id}})"
                                                         class="badge bg-label-danger cursor-pointer border-0">
                                                     <i class="bx bx-trash"></i>
                                                 </button>
@@ -351,13 +316,13 @@
                         </div>
                         <div class="row">
                             <div class="col mb-3">
+                                <small class="fw-bold">Harap copy password sebelum submit!</small>
                                 <div class="input-group mb-3">
                                     <input type="text" class="form-control" id="password" name="password"
                                            placeholder="Password" readonly>
                                     <button type="button" class="btn btn-primary btn-sm" onclick="generatePass()">
                                         Generate
                                     </button>
-                                    <div id="errPassword" class="invalid-feedback"></div>
                                 </div>
                             </div>
                         </div>
@@ -369,6 +334,234 @@
                         <button type="submit" class="btn btn-primary">Buat</button>
                     </div>
                 </form>
+                <div class="d-flex mt-4 ms-2">
+                    <p class="me-4">Ditambahkan oleh: <span class="fw-bold" id="user_add"></span></p>
+                    <p>Diupdate oleh: <span class="fw-bold" id="user_update"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deleteAnggotaModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Hapus Data: <span id="anggotaName"></span></h5>
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                    ></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col mb-3">
+                            <h4>Apakah Anda Yakin?</h4>
+                            <p> Data yang Sudah Dihapus Tidak Bisa Dikembalikan!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        Batal
+                    </button>
+                    <form action="" method="post" id="deleteForm">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" class="btn btn-danger">Yakin</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="editAnggotaModal" tabindex="-1"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit
+                        Data: <span id="editFormTitle"></span></h5>
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                    ></button>
+                </div>
+                <form action="" method="post" id="edit-anggota-form">
+                    @csrf
+                    @method('put')
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col mb-3">
+                                <div class="form-floating">
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="nama_indo"
+                                        name="nama_indo"
+                                        placeholder=" "
+                                        aria-describedby="nama_indo"
+                                    />
+                                    <label for="nama_indo">Nama Indonesia</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-2">
+                            <div class="col mb-3">
+                                <div class="form-floating">
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="nama_mandarin_hanzi"
+                                        name="nama_mandarin_hanzi"
+                                        placeholder=" "
+                                        aria-describedby="nama_mandarin_hanzi"
+                                    />
+                                    <label for="nama_mandarin_hanzi">Nama Mandarin
+                                        (Hanzi)</label>
+                                </div>
+                            </div>
+                            <div class="col mb-3">
+                                <div class="form-floating">
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="nama_mandarin_pinyin"
+                                        name="nama_mandarin_pinyin"
+                                        placeholder=" "
+                                        aria-describedby="nama_mandarin_pinyin"
+                                    />
+                                    <label for="nama_mandarin_pinyin">Nama Mandarin
+                                        (Pinyin)</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-2">
+                            <div class="col mb-3">
+                                <div class="form-floating">
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="tempat_lahir"
+                                        name="tempat_lahir"
+                                        placeholder=" "
+                                        aria-describedby="tempat_lahir"
+                                    />
+                                    <label for="tempat_lahir">Tempat Lahir</label>
+                                </div>
+                            </div>
+                            <div class="col mb-3">
+                                <div class="form-floating">
+                                    <input
+                                        type="date"
+                                        class="form-control"
+                                        id="tgl_lahir"
+                                        name="tgl_lahir"
+                                        placeholder=" "
+                                        aria-describedby="tgl_lahir"
+                                    />
+                                    <label for="tgl_lahir">Tanggal Lahir</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col mb-3">
+                                <div class="form-floating">
+                                    <textarea
+                                        class="form-control"
+                                        id="alamat"
+                                        name="alamat"
+                                        placeholder=" "
+                                        aria-describedby="alamat"
+                                    ></textarea>
+                                    <label for="alamat">Alamat</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col mb-3">
+                                <div class="form-floating">
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="telp"
+                                        name="telp"
+                                        placeholder=" "
+                                        aria-describedby="telp"
+                                    >
+                                    <label for="telp">No. Telepon</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-2">
+                            <div class="col mb-3">
+                                <select
+                                    class="form-control"
+                                    id="gol_darah_edit"
+                                    name="gol_darah"
+                                    aria-describedby="gol_darah"
+                                >
+                                    <option value="" disabled selected>--GOL
+                                        DARAH--
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col mb-3">
+                                <select
+                                    class="form-control"
+                                    id="status_ketuhanan_edit"
+                                    name="status_ketuhanan"
+                                    aria-describedby="status_ketuhanan"
+                                >
+                                    <option value="" disabled selected>--STATUS
+                                        KETUHANAN--
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row g-2">
+                            <div class="col mb-3">
+                                <select
+                                    class="form-control"
+                                    id="status_vegetarian_edit"
+                                    name="status_vegetarian"
+                                    aria-describedby="status_vegetarian"
+                                >
+                                    <option value="" disabled selected>--STATUS
+                                        VEGETARIAN--
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col mb-3">
+                                <select
+                                    class="form-control"
+                                    id="status_qiu_dao_edit"
+                                    name="status_qiu_dao"
+                                    aria-describedby="status_qiu_dao"
+                                >
+                                    <option value="" disabled selected>--STATUS QIU
+                                        DAO--
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary"
+                                data-bs-dismiss="modal">
+                            Batal
+                        </button>
+                        <button type="submit" class="btn btn-primary">Update Data</button>
+                    </div>
+                </form>
+                <div class="d-flex mt-4 ms-2">
+                    <p class="me-4">Ditambahkan oleh: <span class="fw-bold" id="user_add"></span></p>
+                    <p>Diupdate oleh: <span class="fw-bold" id="user_update"></span></p>
+                </div>
             </div>
         </div>
     </div>
@@ -379,55 +572,55 @@
         $(document).ready(function () {
             new DataTable("#anggotaTable")
 
-            $("#gol_darah").one('click', function () {
+            $("#gol_darah, #gol_darah_edit").one('click', function () {
                 $.ajax({
                     type: 'post',
                     data: {_token: $("meta[name=csrf-token]").attr('content'), status: 'gol_darah'},
                     url: `get-status`,
                     dataType: 'json',
                     success: function (response) {
-                        appendToSelect('gol_darah', response)
+                        appendToSelect('gol_darah', 'gol_darah_edit', response)
                     }
                 })
             })
 
-            $("#status_ketuhanan").one('click', function () {
+            $("#status_ketuhanan, #status_ketuhanan_edit").one('click', function () {
                 $.ajax({
                     type: 'post',
                     data: {_token: $("meta[name=csrf-token]").attr('content'), status: 'status_ketuhanan'},
                     url: `get-status`,
                     dataType: 'json',
                     success: function (response) {
-                        appendToSelect('status_ketuhanan', response)
+                        appendToSelect('status_ketuhanan', 'status_ketuhanan_edit', response)
                     }
                 })
             })
 
-            $("#status_vegetarian").one('click', function () {
+            $("#status_vegetarian, #status_vegetarian").one('click', function () {
                 $.ajax({
                     type: 'post',
                     data: {_token: $("meta[name=csrf-token]").attr('content'), status: 'status_vegetarian'},
                     url: `get-status`,
                     dataType: 'json',
                     success: function (response) {
-                        appendToSelect('status_vegetarian', response)
+                        appendToSelect('status_vegetarian', 'status_vegetarian_edit', response)
                     }
                 })
             })
 
-            $("#status_qiu_dao").one('click', function () {
+            $("#status_qiu_dao, #status_qiu_dao_edit").one('click', function () {
                 $.ajax({
                     type: 'post',
                     data: {_token: $("meta[name=csrf-token]").attr('content'), status: 'status_qiu_dao'},
                     url: `get-status`,
                     dataType: 'json',
                     success: function (response) {
-                        appendToSelect('status_qiu_dao', response)
+                        appendToSelect('status_qiu_dao', 'status_qiu_dao_edit', response)
                     }
                 })
             })
 
-            function appendToSelect(status, response) {
+            function appendToSelect(status, status2, response) {
                 let len = 0
 
                 if (response['data'] != null) {
@@ -440,29 +633,40 @@
                         let desc = response['data'][i].desc
                         let options = `<option value=${id}>${desc}</option>`
 
-                        $(`#${status}`).append(options)
+                        $(`#${status}, #${status2}`).append(options)
                     }
-                    $(`#${status}`).append("<option value=''>-</option>")
+                    $(`#${status}, #${status2}`).append("<option value=''>-</option>")
                 } else {
                     let options = "<option value=''>Tidak ada data. Coba lagi.</option>"
 
                     $(`#${status}`).append(options)
                 }
             }
-
         })
 
-        function getAnggotaById(id) {
+        function getAnggotaById(status, id) {
             $.ajax({
                 url: `get-anggota/${id}`,
                 type: 'get',
                 data: {id},
                 dataType: 'json',
                 success: function ({data}) {
-                    $("#anggotaModalTitle").text(data.nama_indo)
-                    $("#updateForm").attr("action", () => `/anggota/${id}`)
+                    if (status === 'add') {
+                        sendToAddAccountModal(data)
+                    } else if (status === 'edit') {
+                        sendToEditModal(data)
+                    } else if (status === 'delete') {
+                        sendToDeleteModal(data)
+                    }
                 }
             })
+        }
+
+        function sendToAddAccountModal(data) {
+            $("#anggotaModalTitle").text(data.nama_indo)
+            $("#anggotaModal #user_add").text(data.user_add)
+            $("#anggotaModal #user_update").text(data.user_update)
+            $("#updateForm").attr("action", () => `/anggota/${data.id}`)
         }
 
         function generatePass() {
@@ -470,6 +674,25 @@
             const result = Math.random().toString(36).substring(2, 10);
 
             pass.value = result;
+        }
+
+        function sendToDeleteModal(data) {
+            $("#anggotaName").text(data.nama_indo)
+            $("#deleteForm").attr("action", () => `/anggota/${data.id}`)
+        }
+
+        function sendToEditModal(data) {
+            $("#edit-anggota-form").attr('action', () => `/anggota/${data.id}`)
+            $("#editFormTitle").text(data.nama_indo)
+            $("#editAnggotaModal #user_add").text(data.user_add)
+            $("#editAnggotaModal #user_update").text(data.user_update)
+            $("#editAnggotaModal #nama_indo").val(data.nama_indo)
+            $("#editAnggotaModal #nama_mandarin_hanzi").val(data.nama_mandarin_hanzi)
+            $("#editAnggotaModal #nama_mandarin_pinyin").val(data.nama_mandarin_pinyin)
+            $("#editAnggotaModal #tempat_lahir").val(data.tempat_lahir)
+            $("#editAnggotaModal #tgl_lahir").val(data.tgl_lahir)
+            $("#editAnggotaModal #alamat").val(data.alamat)
+            $("#editAnggotaModal #telp").val(data.telp)
         }
     </script>
 @endpush

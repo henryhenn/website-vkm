@@ -15,19 +15,19 @@ class SubMenuSeeder extends Seeder
     {
         DB::table('sub_menu')
             ->insert([
-               [
-                   'menu_id' => 1,
-                   'sub_menu' => 'Dashboard',
-                   'url' => 'dashboard',
-                   'icon' => 'bx bx-home-circle',
-                   'active' => 1,
-                   'user_add' => 'admin',
-                   'user_update' => 'admin'
-               ],
+                [
+                    'menu_id' => 1,
+                    'sub_menu' => 'Dashboard',
+                    'url' => 'dashboard',
+                    'icon' => 'bx bx-home-circle',
+                    'active' => 1,
+                    'user_add' => 'admin',
+                    'user_update' => 'admin'
+                ],
                 [
                     'menu_id' => 1,
                     'sub_menu' => 'Akses Grup',
-                        'url' => 'admin/groupAccess',
+                    'url' => 'admin/groupAccess',
                     'icon' => 'bx bx-universal-access',
                     'active' => 1,
                     'user_add' => 'admin',

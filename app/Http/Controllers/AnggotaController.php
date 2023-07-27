@@ -12,7 +12,7 @@ class AnggotaController extends Controller
     public function index()
     {
         $anggota = User::query()
-            ->select('id', 'nama_indo', 'nama_mandarin_hanzi', 'nama_mandarin_pinyin', 'telp', 'active', 'created_at')
+            ->select('*')
             ->paginate(100);
 
         return view('anggota.index', compact('anggota'));
@@ -20,12 +20,7 @@ class AnggotaController extends Controller
 
     public function store(AnggotaRequest $request)
     {
-        User::query()
-            ->create(array_merge(
-                $request->validated(),
-                ['user_add' => auth()->user()->username]
-            ))
-            ->assignRole('Member');
+        User::create($request->validated());
 
         return back()->with('message', 'Anggota berhasil ditambahkan!');
     }
@@ -39,17 +34,16 @@ class AnggotaController extends Controller
 
     public function update(AnggotaRequest $request, string $id)
     {
-        $user = User::query()->findOrFail($id);
-
-        $user->update([
-            'username' => $request->get('username'),
-            'active' => 1,
-            'password' => $request->get('password')
-        ]);
-
-        $user->syncRole('User');
+        User::findOrFail($id)->update($request->validated());
 
         return back()->with('message', 'Akun berhasil dibuatkan!');
+    }
+
+    public function destroy(string $id)
+    {
+        User::find($id)->delete();
+
+        return back()->with('message', 'Data Anggota Berhasil Dihapus!');
     }
 
     public function getStatus()

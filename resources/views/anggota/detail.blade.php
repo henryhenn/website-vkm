@@ -1,3 +1,4 @@
+@php use function App\Helpers\convert_date; @endphp
 @extends('layouts.app', ['title' => 'Detail Anggota'])
 
 @section('content')
@@ -36,7 +37,7 @@
                                 <span class="text-mandarin">{{$anggota->nama_mandarin_hanzi}}</span>
                                 - {{$anggota->nama_mandarin_pinyin}}</h6>
                             <h6 class="fw-bold">{{$anggota->tempat_lahir}}</h6>
-                            <h6 class="fw-bold">{{$anggota->tgl_lahir->format('d - M - Y')}}</h6>
+                            <h6 class="fw-bold">{{convert_date($anggota->tgl_lahir)}}</h6>
                             <h6 class="fw-bold">{{$anggota->alamat}}</h6>
                             <h6 class="fw-bold">{{$anggota->telp ?? ''}}</h6>
                             <h6 class="fw-bold">{{$anggota->gol_darah ?? ''}}</h6>

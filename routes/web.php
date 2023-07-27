@@ -3,6 +3,7 @@
 use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\QuotesController;
+use App\Http\Controllers\SidebarController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -27,7 +28,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 
     Route::resource('profil', ProfilController::class)->only('index', 'edit', 'update');
-    Route::resource('anggota', AnggotaController::class)->only('index', 'store', 'update', 'show');
+    Route::resource('anggota', AnggotaController::class)->except('edit', 'create');
     Route::resource('quotes', QuotesController::class)->only('store', 'update');
 
 //    jQuery Routes
