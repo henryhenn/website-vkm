@@ -63,6 +63,16 @@
                         </a>
                     </li>
                     <li>
+                        <a class="dropdown-item" href="" onclick="event.preventDefault();" data-bs-toggle="modal"
+                           data-bs-target="#updatePassword">
+                            <i class="bx bx-cog me-2"></i>
+                            <span class="align-middle">Update Password</span>
+                        </a>
+                    </li>
+                    <li>
+                        <div class="dropdown-divider"></div>
+                    </li>
+                    <li>
                         <a class="dropdown-item" href="{{route('logout')}}"
                            onclick="event.preventDefault(); document.getElementById('logout-form').submit()">
                             <i class="bx bx-power-off me-2"></i>
@@ -76,6 +86,58 @@
         </ul>
     </div>
 </nav>
+
+<div class="modal fade" id="updatePassword" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalCenterTitle">Update Password</h5>
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                ></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col mb-3">
+                        <div class="form-floating">
+                            <input
+                                readonly
+                                type="text"
+                                name="username"
+                                value="{{auth()->user()->username}}"
+                                id="username"
+                                class="form-control"
+                                placeholder=" "
+                            />
+                            <label for="username" class="form-label">Username</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <small class="fw-bold">Harap copy password sebelum submit!</small>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" id="password" name="password"
+                                   placeholder="Password" readonly>
+                            <button type="button" class="btn btn-primary btn-sm" onclick="generatePass()">
+                                Generate
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                    Close
+                </button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 @push('scripts')
     <script>
@@ -107,5 +169,12 @@
         }
 
         showTime();
+
+        function generatePass() {
+            let pass = document.querySelector('#password')
+            const result = Math.random().toString(36).substring(2, 10);
+
+            pass.value = result;
+        }
     </script>
 @endpush

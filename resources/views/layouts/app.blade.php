@@ -38,7 +38,7 @@
 
     <script src="{{asset('sneat/assets/js/config.js')}}"></script>
 
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
+    @stack('dataTablesCSS')
 
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"
             integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
@@ -101,8 +101,6 @@
     <div class="layout-overlay layout-menu-toggle"></div>
 </div>
 
-<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
-
 <script src="{{asset('sneat/assets/vendor/libs/jquery/jquery.js')}}"></script>
 <script src="{{asset('sneat/assets/vendor/libs/popper/popper.js')}}"></script>
 <script src="{{asset('sneat/assets/vendor/js/bootstrap.js')}}"></script>
@@ -120,13 +118,8 @@
 
 @stack('scripts')
 
-<script>
-    setTimeout(() => {
-        const alert = document.querySelector("#alert-message")
-
-        alert.style.display = 'none'
-    }, 5000)
-</script>
+<script src="{{asset('js/setNavbarTimeout.js')}}"></script>
+<script src="{{asset('js/getSidebarMenu.js')}}"></script>
 </body>
 
 </html>

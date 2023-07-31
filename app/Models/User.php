@@ -43,8 +43,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
-//        'tgl_lahir' => 'date:d-M-Y',
-        'created_at' => 'datetime:d M Y H:i',
-        'updated_at' => 'datetime:d M Y H:i',
+        'created_at' => 'date:Y-m-d',
+        'updated_at' => 'date:Y-m-d',
     ];
 }

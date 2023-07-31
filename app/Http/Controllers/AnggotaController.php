@@ -3,16 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AnggotaRequest;
+use App\Models\SubMenu;
 use App\Models\User;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Permission;
 
 class AnggotaController extends Controller
 {
     public function index()
     {
+        $this->middleware('permission:View Daftar Anggota');
+
         $anggota = User::query()
-            ->select('*')
+            ->select('id', 'nama_indo', 'nama_mandarin_hanzi', 'nama_mandarin_pinyin', 'telp', 'active', 'created_at')
             ->paginate(100);
 
         return view('anggota.index', compact('anggota'));
@@ -20,6 +24,8 @@ class AnggotaController extends Controller
 
     public function store(AnggotaRequest $request)
     {
+        $this->middleware('permission:Create Daftar Anggota');
+
         User::create($request->validated());
 
         return back()->with('message', 'Anggota berhasil ditambahkan!');
@@ -27,6 +33,8 @@ class AnggotaController extends Controller
 
     public function show(string $id)
     {
+        $this->middleware('permission:View Daftar Anggota');
+
         $anggota = User::findOrFail($id);
 
         return view('anggota.detail', compact('anggota'));
@@ -34,6 +42,8 @@ class AnggotaController extends Controller
 
     public function update(AnggotaRequest $request, string $id)
     {
+        $this->middleware('permission:Edit Daftar Anggota');
+
         User::findOrFail($id)->update($request->validated());
 
         return back()->with('message', 'Akun berhasil dibuatkan!');
@@ -41,9 +51,36 @@ class AnggotaController extends Controller
 
     public function destroy(string $id)
     {
+        $this->middleware('permission:Delete Daftar Anggota');
+
         User::find($id)->delete();
 
         return back()->with('message', 'Data Anggota Berhasil Dihapus!');
+    }
+
+    public function permissions(User $user)
+    {
+        $this->middleware('permission:Control Daftar Anggota');
+
+        $sub_menu = SubMenu::query()
+            ->select('sub_menu')
+            ->orderBy('sub_menu')
+            ->get();
+        $permissions = Permission::take(5)->get();
+
+        return view('anggota.permissions', compact('user', 'sub_menu', 'permissions'));
+    }
+
+    public function setPermissions(User $user)
+    {
+        $this->middleware('permission:Control Daftar Anggota');
+
+        $user->syncPermissions(request()->get('permissions'));
+        $user->update([
+            'user_update' => auth()->user()->nama_indo
+        ]);
+
+        return to_route('anggota.index')->with('message', 'Privilege berhasil diset!');
     }
 
     public function getStatus()
@@ -59,15 +96,10 @@ class AnggotaController extends Controller
         ]);
     }
 
-    public function getAnggotaById(string $id)
+    public function getAnggotaById(User $user)
     {
-        $anggota = DB::table('users')
-            ->select("*")
-            ->where('id', $id)
-            ->first();
-
         return response()->json([
-            'data' => $anggota,
+            'data' => $user,
             'status' => Response::HTTP_ACCEPTED
         ]);
     }

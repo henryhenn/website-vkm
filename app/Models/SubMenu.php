@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Spatie\Permission\Models\Permission;
 
 class SubMenu extends Model
 {
@@ -11,6 +13,11 @@ class SubMenu extends Model
 
     public function menu(): BelongsTo
     {
-        return $this->belongsTo(Menu::class);
+        return $this->belongsTo(SubMenu::class);
+    }
+
+    public function permissions(): HasMany
+    {
+        return $this->hasMany(Permission::class);
     }
 }

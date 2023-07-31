@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('acara', 200)->nullable();
             $table->date('tgl')->nullable();
-            $table->boolean('active')->nullable();
+            $table->boolean('active')->nullable()->default(1);
             $table->string('image')->nullable();
             $table->string('tempat')->nullable();
             $table->string('user_add', 100)->nullable();

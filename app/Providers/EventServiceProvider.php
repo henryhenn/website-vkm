@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Acara;
 use App\Models\User;
+use App\Observers\AcaraObserver;
 use App\Observers\AnggotaObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -28,6 +30,7 @@ class EventServiceProvider extends ServiceProvider
     public function boot(): void
     {
         User::observe(AnggotaObserver::class);
+        Acara::observe(AcaraObserver::class);
     }
 
     /**

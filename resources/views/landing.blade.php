@@ -17,7 +17,7 @@
             alt="VKM"
             class="w-[212px] h-[187px] shrink-0"
         />
-        <div class="">
+        <div class="text-center">
             <h1 class="text-center text-4xl font-bold space-y-1 mt-6">
                 Karuna Maitreya -
                 <span

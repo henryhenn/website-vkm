@@ -4,10 +4,15 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Permission;
 
 class   UserSeeder extends Seeder
 {
+    protected function getAllPermissions()
+    {
+        return Permission::all();
+    }
+
     /**
      * Run the database seeds.
      */
@@ -35,6 +40,8 @@ class   UserSeeder extends Seeder
         ]);
 
         $karuna_maitreya->assignRole('Admin');
+        $karuna_maitreya->givePermissionTo($this->getAllPermissions());
+
 
         $welhan = User::create([
             'nama_indo' => 'Welhan Susanto',
@@ -59,5 +66,6 @@ class   UserSeeder extends Seeder
         ]);
 
         $welhan->assignRole('Admin');
+        $welhan->givePermissionTo($this->getAllPermissions());
     }
 }

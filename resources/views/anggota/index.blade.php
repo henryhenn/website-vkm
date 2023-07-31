@@ -1,4 +1,8 @@
-@php use function App\Helpers\convert_date;use function App\Helpers\convert_date_with_time; @endphp
+@php use function App\Helpers\convert_date;use function App\Helpers\convert_date_to_time;use function App\Helpers\tgl_indo; @endphp
+@push('dataTablesCSS')
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
+@endpush
+
 @extends('layouts.app', ['title' => 'Daftar Anggota'])
 
 @section('content')
@@ -233,43 +237,51 @@
                                             <span
                                                 class="badge bg-label-{{$data->active ? 'success' : 'danger'}}">{{$data->active ? 'Aktif' : 'Non-aktif'}}</span>
                                         </td>
-                                        <td>{{convert_date_with_time($data->created_at)}}</td>
+                                        <td>{{tgl_indo(convert_date($data->created_at)) . ' | ' .  convert_date_to_time($data->created_at)}}</td>
                                         <td>
                                             <div class="d-flex">
-                                                @if(!$data->active)
+                                                @can('Edit Daftar Anggota')
+                                                    @if(!$data->active)
+                                                        <button id="showModal"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#anggotaModal"
+                                                                onclick="getAnggotaById('add', {{$data->id}})"
+                                                                class="badge bg-label-success me-2 cursor-pointer border-0">
+                                                            <i class="bx bx-user-plus"></i>
+                                                        </button>
+                                                    @endif
+                                                @endif
+                                                @can('View Daftar Anggota')
+                                                    <a href="{{route('anggota.show', $data->id)}}"
+                                                       class="badge bg-label-primary">
+                                                        <i class="bx bx-show"></i>
+                                                    </a>
+                                                @endcan
+                                                @can('Edit Daftar Anggota')
                                                     <button id="showModal"
                                                             data-bs-toggle="modal"
-                                                            data-bs-target="#anggotaModal"
-                                                            onclick="getAnggotaById('add', {{$data->id}})"
-                                                            class="badge bg-label-success me-2 cursor-pointer border-0">
-                                                        <i class="bx bx-user-plus"></i>
+                                                            onclick="getAnggotaById('edit', {{$data->id}})"
+                                                            data-bs-target="#editAnggotaModal"
+                                                            class="badge ms-2 bg-label-warning cursor-pointer border-0">
+                                                        <i class="bx bx-edit"></i>
                                                     </button>
-                                                @endif
-                                                <a href="{{route('anggota.show', $data->id)}}"
-                                                   class="badge bg-label-primary">
-                                                    <i class="bx bx-show"></i>
-                                                </a>
-                                                <button id="showModal"
-                                                        data-bs-toggle="modal"
-                                                        onclick="getAnggotaById('edit', {{$data->id}})"
-                                                        data-bs-target="#editAnggotaModal"
-                                                        class="badge ms-2 bg-label-warning cursor-pointer border-0">
-                                                    <i class="bx bx-edit"></i>
-                                                </button>
-                                                <button id="showModal"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#permissionModal"
-                                                        onclick=""
-                                                        class="badge mx-2 bg-label-info cursor-pointer border-0">
-                                                    <i class="bx bx-cog"></i>
-                                                </button>
-                                                <button id="showModal"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#deleteAnggotaModal"
-                                                        onclick="getAnggotaById('delete', {{$data->id}})"
-                                                        class="badge bg-label-danger cursor-pointer border-0">
-                                                    <i class="bx bx-trash"></i>
-                                                </button>
+                                                @endcan
+                                                @can('Control Daftar Anggota')
+                                                    <a href="{{route('permissions.index', $data->id)}}"
+                                                       class="badge mx-2 bg-label-info cursor-pointer border-0">
+                                                        <i class="bx bx-cog"></i>
+                                                    </a>
+                                                @endcan
+                                                @can('Delete Daftar Anggota')
+                                                    <button id="showModal"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#deleteAnggotaModal"
+                                                            onclick="getAnggotaById('delete', {{$data->id}})"
+                                                            class="badge bg-label-danger cursor-pointer border-0">
+                                                        <i class="bx bx-trash"></i>
+                                                    </button>
+                                                @endcan
+
                                             </div>
                                         </td>
                                     </tr>
@@ -565,134 +577,10 @@
             </div>
         </div>
     </div>
+
 @endsection
 
 @push('scripts')
-    <script>
-        $(document).ready(function () {
-            new DataTable("#anggotaTable")
-
-            $("#gol_darah, #gol_darah_edit").one('click', function () {
-                $.ajax({
-                    type: 'post',
-                    data: {_token: $("meta[name=csrf-token]").attr('content'), status: 'gol_darah'},
-                    url: `get-status`,
-                    dataType: 'json',
-                    success: function (response) {
-                        appendToSelect('gol_darah', 'gol_darah_edit', response)
-                    }
-                })
-            })
-
-            $("#status_ketuhanan, #status_ketuhanan_edit").one('click', function () {
-                $.ajax({
-                    type: 'post',
-                    data: {_token: $("meta[name=csrf-token]").attr('content'), status: 'status_ketuhanan'},
-                    url: `get-status`,
-                    dataType: 'json',
-                    success: function (response) {
-                        appendToSelect('status_ketuhanan', 'status_ketuhanan_edit', response)
-                    }
-                })
-            })
-
-            $("#status_vegetarian, #status_vegetarian").one('click', function () {
-                $.ajax({
-                    type: 'post',
-                    data: {_token: $("meta[name=csrf-token]").attr('content'), status: 'status_vegetarian'},
-                    url: `get-status`,
-                    dataType: 'json',
-                    success: function (response) {
-                        appendToSelect('status_vegetarian', 'status_vegetarian_edit', response)
-                    }
-                })
-            })
-
-            $("#status_qiu_dao, #status_qiu_dao_edit").one('click', function () {
-                $.ajax({
-                    type: 'post',
-                    data: {_token: $("meta[name=csrf-token]").attr('content'), status: 'status_qiu_dao'},
-                    url: `get-status`,
-                    dataType: 'json',
-                    success: function (response) {
-                        appendToSelect('status_qiu_dao', 'status_qiu_dao_edit', response)
-                    }
-                })
-            })
-
-            function appendToSelect(status, status2, response) {
-                let len = 0
-
-                if (response['data'] != null) {
-                    len = response['data'].length
-                }
-
-                if (len > 0) {
-                    for (let i = 0; i < len; i++) {
-                        let id = response['data'][i].id
-                        let desc = response['data'][i].desc
-                        let options = `<option value=${id}>${desc}</option>`
-
-                        $(`#${status}, #${status2}`).append(options)
-                    }
-                    $(`#${status}, #${status2}`).append("<option value=''>-</option>")
-                } else {
-                    let options = "<option value=''>Tidak ada data. Coba lagi.</option>"
-
-                    $(`#${status}`).append(options)
-                }
-            }
-        })
-
-        function getAnggotaById(status, id) {
-            $.ajax({
-                url: `get-anggota/${id}`,
-                type: 'get',
-                data: {id},
-                dataType: 'json',
-                success: function ({data}) {
-                    if (status === 'add') {
-                        sendToAddAccountModal(data)
-                    } else if (status === 'edit') {
-                        sendToEditModal(data)
-                    } else if (status === 'delete') {
-                        sendToDeleteModal(data)
-                    }
-                }
-            })
-        }
-
-        function sendToAddAccountModal(data) {
-            $("#anggotaModalTitle").text(data.nama_indo)
-            $("#anggotaModal #user_add").text(data.user_add)
-            $("#anggotaModal #user_update").text(data.user_update)
-            $("#updateForm").attr("action", () => `/anggota/${data.id}`)
-        }
-
-        function generatePass() {
-            let pass = document.querySelector('#password')
-            const result = Math.random().toString(36).substring(2, 10);
-
-            pass.value = result;
-        }
-
-        function sendToDeleteModal(data) {
-            $("#anggotaName").text(data.nama_indo)
-            $("#deleteForm").attr("action", () => `/anggota/${data.id}`)
-        }
-
-        function sendToEditModal(data) {
-            $("#edit-anggota-form").attr('action', () => `/anggota/${data.id}`)
-            $("#editFormTitle").text(data.nama_indo)
-            $("#editAnggotaModal #user_add").text(data.user_add)
-            $("#editAnggotaModal #user_update").text(data.user_update)
-            $("#editAnggotaModal #nama_indo").val(data.nama_indo)
-            $("#editAnggotaModal #nama_mandarin_hanzi").val(data.nama_mandarin_hanzi)
-            $("#editAnggotaModal #nama_mandarin_pinyin").val(data.nama_mandarin_pinyin)
-            $("#editAnggotaModal #tempat_lahir").val(data.tempat_lahir)
-            $("#editAnggotaModal #tgl_lahir").val(data.tgl_lahir)
-            $("#editAnggotaModal #alamat").val(data.alamat)
-            $("#editAnggotaModal #telp").val(data.telp)
-        }
-    </script>
+    <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+    <script src="{{asset('js/viewAnggotaScript.js')}}"></script>
 @endpush
