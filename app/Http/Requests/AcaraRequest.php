@@ -24,6 +24,8 @@ class AcaraRequest extends FormRequest
         return [
             'acara' => 'required|sometimes|string|max:200',
             'tgl' => 'required|sometimes|date',
+            'jam_mulai' => 'nullable',
+            'jam_selesai' => 'nullable',
             'image' => 'required|sometimes|file|mimes:jpeg,jpg,png|max:4096',
             'tempat' => 'nullable|string'
         ];

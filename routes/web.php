@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AcaraController;
 use App\Http\Controllers\AnggotaController;
+use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\QuotesController;
@@ -20,9 +21,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('landing');
-});
+Route::get('/', LandingPageController::class);
 
 Auth::routes(['register' => false]);
 
@@ -46,7 +45,7 @@ Route::middleware('auth')->group(function () {
 //    jQuery Routes
     Route::get('get-sidebar-menu', SidebarController::class);
     Route::get('get-user-quote', [QuotesController::class, 'getQuote']);
-    Route::post('get-status', [AnggotaController::class, 'getStatus']);
+    Route::post('/get-status', [AnggotaController::class, 'getStatus']);
     Route::get('get-anggota/{user:id}', [AnggotaController::class, 'getAnggotaById']);
     Route::get('get-acara/{acara:id}', [AcaraController::class, 'getAcaraById']);
 });

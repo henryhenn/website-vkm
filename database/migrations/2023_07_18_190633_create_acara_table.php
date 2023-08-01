@@ -17,6 +17,8 @@ return new class extends Migration
             $table->date('tgl')->nullable();
             $table->boolean('active')->nullable()->default(1);
             $table->string('image')->nullable();
+            $table->time('jam_mulai')->nullable();
+            $table->time('jam_selesai')->nullable();
             $table->string('tempat')->nullable();
             $table->string('user_add', 100)->nullable();
             $table->string('user_update', 100)->nullable();

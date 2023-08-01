@@ -11,7 +11,7 @@ function getAcaraById(status, id) {
             if (status === 'edit') {
                 addToEditForm(data)
             } else if (status === 'delete') {
-                addToDelteForm(data)
+                addToDeleteForm(data)
             }
         }
     })
@@ -25,7 +25,7 @@ function addToEditForm(data) {
     $("#edit-form #tempat").val(data.tempat)
 }
 
-function addToDelteForm (data) {
+function addToDeleteForm (data) {
     $("#acaraName").text(data.acara)
     $("#deleteForm").attr('action', () => `/data/acara/${data.id}`)
 }

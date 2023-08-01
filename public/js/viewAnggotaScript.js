@@ -5,7 +5,7 @@ $(document).ready(function () {
         $.ajax({
             type: 'post',
             data: {_token: $("meta[name=csrf-token]").attr('content'), status: 'gol_darah'},
-            url: `get-status`,
+            url: '/get-status',
             dataType: 'json',
             success: function (response) {
                 appendToSelect('gol_darah', 'gol_darah_edit', response)
@@ -17,7 +17,7 @@ $(document).ready(function () {
         $.ajax({
             type: 'post',
             data: {_token: $("meta[name=csrf-token]").attr('content'), status: 'status_ketuhanan'},
-            url: `get-status`,
+            url: '/get-status',
             dataType: 'json',
             success: function (response) {
                 appendToSelect('status_ketuhanan', 'status_ketuhanan_edit', response)
@@ -29,7 +29,7 @@ $(document).ready(function () {
         $.ajax({
             type: 'post',
             data: {_token: $("meta[name=csrf-token]").attr('content'), status: 'status_vegetarian'},
-            url: `get-status`,
+            url: '/get-status',
             dataType: 'json',
             success: function (response) {
                 appendToSelect('status_vegetarian', 'status_vegetarian_edit', response)
@@ -41,7 +41,7 @@ $(document).ready(function () {
         $.ajax({
             type: 'post',
             data: {_token: $("meta[name=csrf-token]").attr('content'), status: 'status_qiu_dao'},
-            url: `get-status`,
+            url: '/get-status',
             dataType: 'json',
             success: function (response) {
                 appendToSelect('status_qiu_dao', 'status_qiu_dao_edit', response)

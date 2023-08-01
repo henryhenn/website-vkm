@@ -1,3 +1,4 @@
+@php use function App\Helpers\hari_tanggal; @endphp
 <nav
     class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
     id="layout-navbar"
@@ -21,7 +22,7 @@
 
         <ul class="navbar-nav flex-row align-items-center ms-auto">
             <li class="menu-item me-5">
-                {{date('D, d M Y')}}
+                {{hari_tanggal(now()->format('Y-m-d'))}}
             </li>
             <li class="menu-item me-5">
                 <div id="clock" onload="showTime()"></div>
@@ -169,12 +170,5 @@
         }
 
         showTime();
-
-        function generatePass() {
-            let pass = document.querySelector('#password')
-            const result = Math.random().toString(36).substring(2, 10);
-
-            pass.value = result;
-        }
     </script>
 @endpush

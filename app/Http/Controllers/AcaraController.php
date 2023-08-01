@@ -110,6 +110,8 @@ class AcaraController extends Controller
             'image' => $image,
             'tgl' => $request->get('tgl'),
             'tempat' => $request->get('tempat'),
+            'jam_mulai' => $request->get('jam_mulai'),
+            'jam_selesai' => $request->get('jam_selesai'),
         ];
     }
 }

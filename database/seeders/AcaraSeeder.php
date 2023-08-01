@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Acara;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -13,7 +14,7 @@ class AcaraSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('acara')
+        Acara::query()
             ->insert([
                 [
                     'acara' => 'Che It Bulan 12',
@@ -23,7 +24,8 @@ class AcaraSeeder extends Seeder
                     'tempat' => null,
                     'user_add' => 'cwh',
                     'user_update' => 'cwh',
-                    'created_at' => '2022-05-01'
+                    'created_at' => '2022-05-01',
+                    'updated_at' => now()
                 ],
                 [
                     'acara' => 'Cap Go Bulan 12',
@@ -33,7 +35,8 @@ class AcaraSeeder extends Seeder
                     'tempat' => null,
                     'user_add' => 'cwh',
                     'user_update' => 'cwh',
-                    'created_at' => '2023-02-20'
+                    'created_at' => '2023-02-20',
+                    'updated_at' => now()
                 ],
                 [
                     'acara' => 'Kelahiran Buddha Maitreya',
@@ -43,7 +46,8 @@ class AcaraSeeder extends Seeder
                     'tempat' => null,
                     'user_add' => 'cwh',
                     'user_update' => 'cwh',
-                    'created_at' => '2022-01-08'
+                    'created_at' => '2022-01-08',
+                    'updated_at' => now()
                 ],
                 [
                     'acara' => 'Cap Go Me',
@@ -53,7 +57,8 @@ class AcaraSeeder extends Seeder
                     'tempat' => null,
                     'user_add' => 'cwh',
                     'user_update' => 'cwh',
-                    'created_at' => '2022-02-15'
+                    'created_at' => '2022-02-15',
+                    'updated_at' => now()
                 ],
                 [
                     'acara' => 'Che It Bulan 2',
@@ -63,7 +68,8 @@ class AcaraSeeder extends Seeder
                     'tempat' => null,
                     'user_add' => 'cwh',
                     'user_update' => 'cwh',
-                    'created_at' => '2023-02-15'
+                    'created_at' => '2023-02-15',
+                    'updated_at' => now()
                 ],
                 [
                     'acara' => 'Parinibana Buddha Cin Kung',
@@ -73,7 +79,8 @@ class AcaraSeeder extends Seeder
                     'tempat' => null,
                     'user_add' => 'cwh',
                     'user_update' => 'cwh',
-                    'created_at' => '2023-02-20'
+                    'created_at' => '2023-02-20',
+                    'updated_at' => now()
                 ],
                 [
                     'acara' => 'Cap Go Bulan 2',
@@ -83,7 +90,8 @@ class AcaraSeeder extends Seeder
                     'tempat' => null,
                     'user_add' => 'cwh',
                     'user_update' => 'cwh',
-                    'created_at' => '2023-02-20'
+                    'created_at' => '2023-02-20',
+                    'updated_at' => now()
                 ],
                 [
                     'acara' => 'Kelahiran B. Avalokitesvara',
@@ -93,7 +101,8 @@ class AcaraSeeder extends Seeder
                     'tempat' => null,
                     'user_add' => 'cwh',
                     'user_update' => 'cwh',
-                    'created_at' => '2023-02-20'
+                    'created_at' => '2023-02-20',
+                    'updated_at' => now()
                 ],
                 [
                     'acara' => 'Parinibana Ibu Guru Suci',
@@ -103,7 +112,8 @@ class AcaraSeeder extends Seeder
                     'tempat' => null,
                     'user_add' => 'cwh',
                     'user_update' => 'cwh',
-                    'created_at' => '2023-03-06'
+                    'created_at' => '2023-03-06',
+                    'updated_at' => now()
                 ],
                 [
                     'acara' => 'Che It Bulan 3',
@@ -113,7 +123,8 @@ class AcaraSeeder extends Seeder
                     'tempat' => null,
                     'user_add' => 'cwh',
                     'user_update' => 'cwh',
-                    'created_at' => '2023-03-22'
+                    'created_at' => '2023-03-22',
+                    'updated_at' => now()
                 ],
                 [
                     'acara' => 'Lao Mu Da Dian (I)',
@@ -123,7 +134,8 @@ class AcaraSeeder extends Seeder
                     'tempat' => null,
                     'user_add' => 'cwh',
                     'user_update' => 'cwh',
-                    'created_at' => '2023-03-22'
+                    'created_at' => '2023-03-22',
+                    'updated_at' => now()
                 ],
                 [
                     'acara' => 'Che It Bulan 4',
@@ -133,7 +145,8 @@ class AcaraSeeder extends Seeder
                     'tempat' => null,
                     'user_add' => 'cwh',
                     'user_update' => 'cwh',
-                    'created_at' => '2023-03-22'
+                    'created_at' => '2023-03-22',
+                    'updated_at' => now()
                 ],
                 [
                     'acara' => 'Tri Suci Waisak',
@@ -143,7 +156,8 @@ class AcaraSeeder extends Seeder
                     'tempat' => null,
                     'user_add' => 'cwh',
                     'user_update' => 'cwh',
-                    'created_at' => '2023-03-22'
+                    'created_at' => '2023-03-22',
+                    'updated_at' => now()
                 ],
                 [
                     'acara' => 'Kelahiran Buddha Cin Kung',
@@ -153,7 +167,8 @@ class AcaraSeeder extends Seeder
                     'tempat' => null,
                     'user_add' => 'cwh',
                     'user_update' => 'cwh',
-                    'created_at' => '2023-05-19'
+                    'created_at' => '2023-05-19',
+                    'updated_at' => now()
                 ],
                 [
                     'acara' => 'Che It Bulan 5',
@@ -163,7 +178,8 @@ class AcaraSeeder extends Seeder
                     'tempat' => null,
                     'user_add' => 'cwh',
                     'user_update' => 'cwh',
-                    'created_at' => '2023-03-22'
+                    'created_at' => '2023-03-22',
+                    'updated_at' => now()
                 ],
                 [
                     'acara' => 'Parinibana Bodhisatva Te Wei',
@@ -173,7 +189,8 @@ class AcaraSeeder extends Seeder
                     'tempat' => null,
                     'user_add' => 'cwh',
                     'user_update' => 'cwh',
-                    'created_at' => '2023-05-19'
+                    'created_at' => '2023-05-19',
+                    'updated_at' => now()
                 ],
                 [
                     'acara' => 'Cap Go Bulan 5',
@@ -183,7 +200,8 @@ class AcaraSeeder extends Seeder
                     'tempat' => null,
                     'user_add' => 'cwh',
                     'user_update' => 'cwh',
-                    'created_at' => '2023-05-19'
+                    'created_at' => '2023-05-19',
+                    'updated_at' => now()
                 ],
                 [
                     'acara' => 'Che It Bulan 6',
@@ -193,7 +211,8 @@ class AcaraSeeder extends Seeder
                     'tempat' => null,
                     'user_add' => 'cwh',
                     'user_update' => 'cwh',
-                    'created_at' => '2023-07-11'
+                    'created_at' => '2023-07-11',
+                    'updated_at' => now()
                 ],
                 [
                     'acara' => 'Lao Mu Da Dian (II)',
@@ -203,7 +222,8 @@ class AcaraSeeder extends Seeder
                     'tempat' => null,
                     'user_add' => 'cwh',
                     'user_update' => 'cwh',
-                    'created_at' => '2023-05-19'
+                    'created_at' => '2023-05-19',
+                    'updated_at' => now()
                 ],
                 [
                     'acara' => 'Kesempurnaan B. Avalokitesvara',
@@ -213,7 +233,8 @@ class AcaraSeeder extends Seeder
                     'tempat' => null,
                     'user_add' => 'cwh',
                     'user_update' => 'cwh',
-                    'created_at' => '2023-05-19'
+                    'created_at' => '2023-05-19',
+                    'updated_at' => now()
                 ],
                 [
                     'acara' => 'Kelahiran B. Satya Kalama',
@@ -223,7 +244,8 @@ class AcaraSeeder extends Seeder
                     'tempat' => null,
                     'user_add' => 'cwh',
                     'user_update' => 'cwh',
-                    'created_at' => '2023-05-19'
+                    'created_at' => '2023-05-19',
+                    'updated_at' => now()
                 ],
                 [
                     'acara' => 'Parinibana Fu Qian Ren',
@@ -233,7 +255,8 @@ class AcaraSeeder extends Seeder
                     'tempat' => null,
                     'user_add' => 'cwh',
                     'user_update' => 'cwh',
-                    'created_at' => '2023-05-19'
+                    'created_at' => '2023-05-19',
+                    'updated_at' => now()
                 ],
                 [
                     'acara' => 'Cap Go Bulan 7',
@@ -243,7 +266,8 @@ class AcaraSeeder extends Seeder
                     'tempat' => null,
                     'user_add' => 'cwh',
                     'user_update' => 'cwh',
-                    'created_at' => '2023-05-19'
+                    'created_at' => '2023-05-19',
+                    'updated_at' => now()
                 ],
                 [
                     'acara' => 'Kelahiran Bapak Guru Agung',
@@ -253,7 +277,8 @@ class AcaraSeeder extends Seeder
                     'tempat' => null,
                     'user_add' => 'cwh',
                     'user_update' => 'cwh',
-                    'created_at' => '2023-05-01'
+                    'created_at' => '2023-05-01',
+                    'updated_at' => now()
                 ],
                 [
                     'acara' => 'Che It Bulan 8',
@@ -263,7 +288,8 @@ class AcaraSeeder extends Seeder
                     'tempat' => null,
                     'user_add' => 'cwh',
                     'user_update' => 'cwh',
-                    'created_at' => '2023-05-01'
+                    'created_at' => '2023-05-01',
+                    'updated_at' => now()
                 ],
                 [
                     'acara' => 'Parinibana Bapak Guru Agung',
@@ -273,7 +299,8 @@ class AcaraSeeder extends Seeder
                     'tempat' => null,
                     'user_add' => 'cwh',
                     'user_update' => 'cwh',
-                    'created_at' => '2022-05-01'
+                    'created_at' => '2022-05-01',
+                    'updated_at' => now()
                 ],
                 [
                     'acara' => 'Kelahiran Ibu Guru Suci',
@@ -283,7 +310,8 @@ class AcaraSeeder extends Seeder
                     'tempat' => null,
                     'user_add' => 'cwh',
                     'user_update' => 'cwh',
-                    'created_at' => '2022-05-01'
+                    'created_at' => '2022-05-01',
+                    'updated_at' => now()
                 ],
                 [
                     'acara' => 'Che It Bulan 9',
@@ -293,7 +321,8 @@ class AcaraSeeder extends Seeder
                     'tempat' => null,
                     'user_add' => 'cwh',
                     'user_update' => 'cwh',
-                    'created_at' => '2022-09-26'
+                    'created_at' => '2022-09-26',
+                    'updated_at' => now()
                 ],
                 [
                     'acara' => 'Lao Mu Dian (III)',
@@ -303,7 +332,8 @@ class AcaraSeeder extends Seeder
                     'tempat' => null,
                     'user_add' => 'cwh',
                     'user_update' => 'cwh',
-                    'created_at' => '2022-05-01'
+                    'created_at' => '2022-05-01',
+                    'updated_at' => now()
                 ],
                 [
                     'acara' => 'Parinibana B. Avalokitesvara',
@@ -313,7 +343,8 @@ class AcaraSeeder extends Seeder
                     'tempat' => null,
                     'user_add' => 'cwh',
                     'user_update' => 'cwh',
-                    'created_at' => '2022-05-01'
+                    'created_at' => '2022-05-01',
+                    'updated_at' => now()
                 ],
                 [
                     'acara' => 'Che It Bulan 10',
@@ -323,7 +354,8 @@ class AcaraSeeder extends Seeder
                     'tempat' => null,
                     'user_add' => 'cwh',
                     'user_update' => 'cwh',
-                    'created_at' => '2022-05-01'
+                    'created_at' => '2022-05-01',
+                    'updated_at' => now()
                 ],
                 [
                     'acara' => 'Cap Go Bulan 10',
@@ -333,7 +365,8 @@ class AcaraSeeder extends Seeder
                     'tempat' => null,
                     'user_add' => 'cwh',
                     'user_update' => 'cwh',
-                    'created_at' => '2022-05-01'
+                    'created_at' => '2022-05-01',
+                    'updated_at' => now()
                 ],
                 [
                     'acara' => 'Che It Bulan 11',
@@ -343,7 +376,8 @@ class AcaraSeeder extends Seeder
                     'tempat' => null,
                     'user_add' => 'cwh',
                     'user_update' => 'cwh',
-                    'created_at' => '2022-05-01'
+                    'created_at' => '2022-05-01',
+                    'updated_at' => now()
                 ],
                 [
                     'acara' => 'Lao Mu Dian (IV) Parinibana Hong Chang Di Zun',
@@ -353,7 +387,8 @@ class AcaraSeeder extends Seeder
                     'tempat' => null,
                     'user_add' => 'cwh',
                     'user_update' => 'cwh',
-                    'created_at' => '2022-05-01'
+                    'created_at' => '2022-05-01',
+                    'updated_at' => now()
                 ],
                 [
                     'acara' => 'Parinibana Hao Ci Da Di',
@@ -363,7 +398,8 @@ class AcaraSeeder extends Seeder
                     'tempat' => null,
                     'user_add' => 'cwh',
                     'user_update' => 'cwh',
-                    'created_at' => '2022-05-01'
+                    'created_at' => '2022-05-01',
+                    'updated_at' => now()
                 ],
                 [
                     'acara' => 'Mengantar Dewa Zao Jun',
@@ -373,7 +409,8 @@ class AcaraSeeder extends Seeder
                     'tempat' => null,
                     'user_add' => 'cwh',
                     'user_update' => 'cwh',
-                    'created_at' => '2022-01-25'
+                    'created_at' => '2022-01-25',
+                    'updated_at' => now()
                 ],
                 [
                     'acara' => 'Parinibana Zhao Cheng Yuan Jun',
@@ -383,7 +420,8 @@ class AcaraSeeder extends Seeder
                     'tempat' => null,
                     'user_add' => 'cysman87',
                     'user_update' => 'cysman87',
-                    'created_at' => '2022-01-12'
+                    'created_at' => '2022-01-12',
+                    'updated_at' => now()
                 ],
                 [
                     'acara' => 'Pusbatara',
@@ -393,7 +431,8 @@ class AcaraSeeder extends Seeder
                     'tempat' => null,
                     'user_add' => 'cwh',
                     'user_update' => 'cwh',
-                    'created_at' => '2022-09-26'
+                    'created_at' => '2022-09-26',
+                    'updated_at' => now()
                 ],
                 [
                     'acara' => 'Che It Bulan 2 (Run Yue)',
@@ -403,7 +442,8 @@ class AcaraSeeder extends Seeder
                     'tempat' => null,
                     'user_add' => 'cwh',
                     'user_update' => 'cwh',
-                    'created_at' => '2023-02-20'
+                    'created_at' => '2023-02-20',
+                    'updated_at' => now()
                 ],
                 [
                     'acara' => 'Cap Go Bulan 2 (Run Yue)',
@@ -413,7 +453,8 @@ class AcaraSeeder extends Seeder
                     'tempat' => null,
                     'user_add' => 'cwh',
                     'user_update' => 'cwh',
-                    'created_at' => '2023-03-22'
+                    'created_at' => '2023-03-22',
+                    'updated_at' => now()
                 ],
                 [
                     'acara' => 'Bazaar Dan Perayaan Waisak',
@@ -423,7 +464,8 @@ class AcaraSeeder extends Seeder
                     'tempat' => null,
                     'user_add' => 'cwh',
                     'user_update' => 'cwh',
-                    'created_at' => '2023-05-19'
+                    'created_at' => '2023-05-19',
+                    'updated_at' => now()
                 ],
             ]);
     }

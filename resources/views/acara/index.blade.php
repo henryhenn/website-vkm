@@ -75,6 +75,38 @@
                                                 <div class="col mb-3">
                                                     <div class="form-floating">
                                                         <input
+                                                            type="time"
+                                                            class="form-control"
+                                                            id="jam_mulai"
+                                                            name="jam_mulai"
+                                                            value="{{old('jam_mulai')}}"
+                                                            placeholder=" "
+                                                            aria-describedby="jam_mulai"
+                                                        />
+                                                        <label for="jam_mulai">Jam Mulai</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col mb-3">
+                                                    <div class="form-floating">
+                                                        <input
+                                                            type="time"
+                                                            class="form-control"
+                                                            id="jam_selesai"
+                                                            name="jam_selesai"
+                                                            value="{{old('jam_selesai')}}"
+                                                            placeholder=" "
+                                                            aria-describedby="jam_selesai"
+                                                        />
+                                                        <label for="jam_selesai">Jam Selesai</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col mb-3">
+                                                    <div class="form-floating">
+                                                        <input
                                                             type="text"
                                                             class="form-control"
                                                             id="tempat"
@@ -134,14 +166,14 @@
                                         <td>{{$acara->acara}}</td>
                                         <td>
                                             <form action="{{route('acara_active.update', $acara->id)}}"
-                                                  method="post" id="update-active">
+                                                  method="post" id="update-active-{{$acara->id}}">
                                                 @csrf
                                                 @method('put')
                                                 <div class="form-check form-switch mb-2">
                                                     <input class="form-check-input"
                                                            name="active"
+                                                           onclick="$('#update-active-{{$acara->id}}').submit()"
                                                            value="{{$acara->active ? 0 : 1}}"
-                                                           onclick="$('#update-active').submit()"
                                                            @checked($acara->active) type="checkbox"
                                                            id="active"/>
                                                 </div>

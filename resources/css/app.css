@@ -17,3 +17,11 @@ body {
 .text-mandarin {
     font-family: var(--mandarin-font);
 }
+
+.acara-card {
+    @apply w-[307px] p-4 h-auto shrink-0 backdrop-blur-[12px] border rounded-3xl border-[#F86F03] bg-gradient-to-b from-[#F8F8F8]/25 to-[#F8F8F8]/75;
+}
+
+.highlight-text {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-[#F86F03] to-[#FFA41B];
+}
