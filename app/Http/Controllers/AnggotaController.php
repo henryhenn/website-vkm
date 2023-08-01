@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AnggotaRequest;
 use App\Models\SubMenu;
 use App\Models\User;
+use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Password;
 use Spatie\Permission\Models\Permission;
 
 class AnggotaController extends Controller
@@ -56,6 +59,19 @@ class AnggotaController extends Controller
         User::find($id)->delete();
 
         return back()->with('message', 'Data Anggota Berhasil Dihapus!');
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'password' => 'required'
+        ]);
+
+        auth()->user()->update([
+            'password' => bcrypt($request->get('password'))
+        ]);
+
+        return back()->with('message', 'Password berhasil diupdate!');
     }
 
     public function permissions(User $user)

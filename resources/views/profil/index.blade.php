@@ -1,3 +1,4 @@
+@php use function App\Helpers\convert_date;use function App\Helpers\tgl_indo; @endphp
 @extends('layouts.app', ['title' => 'Profil Saya'])
 
 @section('content')
@@ -56,7 +57,7 @@
                                 <span class="text-mandarin">{{auth()->user()->nama_mandarin_hanzi}}</span>
                                 - {{auth()->user()->nama_mandarin_pinyin}}</h6>
                             <h6 class="fw-bold">{{auth()->user()->tempat_lahir}}</h6>
-                            <h6 class="fw-bold">{{auth()->user()->tgl_lahir->format('d - M - Y')}}</h6>
+                            <h6 class="fw-bold">{{tgl_indo(convert_date(auth()->user()->tgl_lahir))}}</h6>
                             <h6 class="fw-bold">{{auth()->user()->alamat}}</h6>
                             <h6 class="fw-bold">{{auth()->user()->telp}}</h6>
                             <h6 class="fw-bold">{{auth()->user()->gol_darah == 0 ? '' : auth()->user()->gol_darah}}</h6>

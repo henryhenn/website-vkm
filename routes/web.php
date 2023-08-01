@@ -39,6 +39,7 @@ Route::middleware('auth')->group(function () {
         Route::put('acara/active/{acara:id}', [AcaraController::class, 'updateActive'])->name('acara_active.update');
     });
 
+    Route::post('anggota/update-password', [AnggotaController::class, 'updatePassword'])->name('anggota.updatePassword');
     Route::resource('profil', ProfilController::class)->only('index', 'edit', 'update');
     Route::resource('quotes', QuotesController::class)->only('store', 'update');
 

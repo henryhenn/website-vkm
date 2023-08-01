@@ -1,6 +1,8 @@
 @extends('layouts.auth', ['title' => 'Login'])
 
 @section('content')
+    <x-alert-message />
+
     <div class="card">
         <div class="card-body">
             <div class="text-center mb-4">

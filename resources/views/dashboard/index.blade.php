@@ -2,6 +2,8 @@
 @extends('layouts.app', ['title' => 'Dashboard'])
 
 @section('content')
+    <x-alert-message/>
+
     <div class="row">
         <div class="col-lg-8 mb-4 order-0">
             <div class="card">
@@ -57,7 +59,7 @@
                                     <th>#</th>
                                     <th>Nama Indonesia</th>
                                     <th>Telepon</th>
-                                    <th>Tanggal mendaftar</th>
+                                    <th>Tanggal didaftarkan</th>
                                 </tr>
                                 </thead>
                                 <tbody>

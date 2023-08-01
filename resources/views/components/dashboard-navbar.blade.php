@@ -100,42 +100,47 @@
                     aria-label="Close"
                 ></button>
             </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col mb-3">
-                        <div class="form-floating">
-                            <input
-                                readonly
-                                type="text"
-                                name="username"
-                                value="{{auth()->user()->username}}"
-                                id="username"
-                                class="form-control"
-                                placeholder=" "
-                            />
-                            <label for="username" class="form-label">Username</label>
+            <form action="{{route('anggota.updatePassword')}}" method="post">
+                @csrf
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col mb-3">
+                            <div class="form-floating">
+                                <input
+                                    readonly
+                                    type="text"
+                                    name="username"
+                                    value="{{auth()->user()->username}}"
+                                    id="username"
+                                    class="form-control"
+                                    placeholder=" "
+                                />
+                                <label for="username" class="form-label">Username</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col mb-3">
+                            <div class="form-floating">
+                                <input
+                                    type="text"
+                                    name="password"
+                                    id="password"
+                                    class="form-control"
+                                    placeholder=" "
+                                />
+                                <label for="password">Password</label>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col mb-3">
-                        <small class="fw-bold">Harap copy password sebelum submit!</small>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="password" name="password"
-                                   placeholder="Password" readonly>
-                            <button type="button" class="btn btn-primary btn-sm" onclick="generatePass()">
-                                Generate
-                            </button>
-                        </div>
-                    </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        Batal
+                    </button>
+                    <button type="submit" class="btn btn-primary">Update Password</button>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                    Close
-                </button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
+            </form>
         </div>
     </div>
 </div>
@@ -170,5 +175,12 @@
         }
 
         showTime();
+
+        function generatePass() {
+            let pass = document.querySelector('#password')
+            const result = Math.random().toString(36).substring(2, 10);
+
+            pass.value = result;
+        }
     </script>
 @endpush
