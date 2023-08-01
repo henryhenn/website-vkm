@@ -85,7 +85,7 @@
         @foreach($acara as $data)
             <div class="acara-card">
                 @if($data->image)
-                <img src="{{asset('storage/' . $data->image)}}" class="rounded-t-3xl" alt=""/>
+                <img src="{{asset('storage/' . $data->image)}}" class="w-full h-[150px] object-cover rounded-t-3xl" alt=""/>
                 @else
                 <img src="{{asset('img/admin.jpeg')}}" class="rounded-t-3xl" alt=""/>
                 @endif

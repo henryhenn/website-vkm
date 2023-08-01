@@ -10,8 +10,9 @@ class LandingPageController extends Controller
     {
         $acara = DB::table('acara')
             ->select('acara', 'tgl', 'tempat', 'image', 'jam_mulai', 'jam_selesai')
-            ->whereDate('tgl', '>=', today()->format('Y-m-d'))
+            ->where('tgl', '>=', today()->format('Y-m-d'))
             ->where('active', 1)
+            ->orderBy('tgl')
             ->take(3)
             ->get();
 

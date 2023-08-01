@@ -19,7 +19,7 @@ body {
 }
 
 .acara-card {
-    @apply w-full md:w-[24%] p-4 h-auto mx-auto md:mx-auto shrink-0 backdrop-blur-[12px] border rounded-3xl border-[#F86F03] bg-gradient-to-b from-[#F8F8F8]/25 to-[#F8F8F8]/75;
+    @apply w-full md:w-[24%] p-4 h-full mx-auto md:mx-auto shrink-0 backdrop-blur-[12px] border rounded-3xl border-[#F86F03] bg-gradient-to-b from-[#F8F8F8]/25 to-[#F8F8F8]/75;
 }
 
 .highlight-text {
