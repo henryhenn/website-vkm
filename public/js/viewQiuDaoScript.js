@@ -35,7 +35,7 @@ function addToEditForm(data) {
     $("#edit-form #amal").val(data.amal)
 }
 
-function addToDeleteForm (data) {
+function addToDeleteForm(data) {
     $("#qiuDaoName").text(data.nama_indo)
     $("#deleteForm").attr('action', () => `/data/qiudao/${data.id}`)
 }
