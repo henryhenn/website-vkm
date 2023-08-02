@@ -11,7 +11,7 @@ class AcaraRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return auth()->check();
+        return auth()->check() && auth()->user()->hasAnyPermission(['Create Acara', 'Edit Acara']);
     }
 
     /**
@@ -34,13 +34,13 @@ class AcaraRequest extends FormRequest
     public function messages(): array
     {
         return [
-          'acara.required' => 'Nama acara wajib diisi!',
-          'acara.max' => 'Nama acara maksimal 200 karakter',
-          'tgl.required' => 'Tanggal acara wajib diisi!',
-          'tgl.date' => 'Tanggal harus berupa tanggal',
-          'image.required' => 'Gambar wajib diisi!',
-          'image.file' => 'Gambar harus berupa file',
-          'image.mimes' => 'Gambar harus berformat JPG, JPEG, atau PNG',
+            'acara.required' => 'Nama acara wajib diisi!',
+            'acara.max' => 'Nama acara maksimal 200 karakter',
+            'tgl.required' => 'Tanggal acara wajib diisi!',
+            'tgl.date' => 'Tanggal harus berupa tanggal',
+            'image.required' => 'Gambar wajib diisi!',
+            'image.file' => 'Gambar harus berupa file',
+            'image.mimes' => 'Gambar harus berformat JPG, JPEG, atau PNG',
         ];
     }
 }

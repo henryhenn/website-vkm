@@ -85,12 +85,13 @@
         @foreach($acara as $data)
             <div class="acara-card">
                 @if($data->image)
-                <img src="{{asset('storage/' . $data->image)}}" class="w-full h-[150px] object-cover rounded-t-3xl" alt=""/>
+                    <img src="{{asset('storage/' . $data->image)}}"
+                         class="w-full h-full md:h-[160px] object-cover rounded-t-3xl" alt=""/>
                 @else
-                <img src="{{asset('img/admin.jpeg')}}" class="rounded-t-3xl" alt=""/>
+                    <img src="{{asset('img/admin.jpeg')}}" class="rounded-t-3xl" alt=""/>
                 @endif
-                <div class="flex flex-col space-y-3 mt-3">
-                    <div class="md:h-[60px]">
+                <div class="flex flex-col space-y-3 mt-2">
+                    <div class="md:h-[40px]">
                         <h3 class="font-bold text-center uppercase text-xl">
                             {{$data->acara}}
                         </h3>
@@ -156,10 +157,14 @@
                     </div>
 
                     <div class="space-x-3">
-                        <svg class="acara-card-icon" xmlns="http://www.w3.org/2000/svg" width="26" height="34" viewBox="0 0 26 34" fill="none">
-                            <path d="M14.6047 33.236C18.0781 28.9617 26 18.602 26 12.7831C26 5.72575 20.1771 0 13 0C5.82292 0 0 5.72575 0 12.7831C0 18.602 7.92188 28.9617 11.3953 33.236C12.2281 34.2547 13.7719 34.2547 14.6047 33.236ZM13 8.52205C14.1493 8.52205 15.2515 8.97098 16.0641 9.77008C16.8768 10.5692 17.3333 11.653 17.3333 12.7831C17.3333 13.9132 16.8768 14.997 16.0641 15.7961C15.2515 16.5952 14.1493 17.0441 13 17.0441C11.8507 17.0441 10.7485 16.5952 9.93587 15.7961C9.12321 14.997 8.66667 13.9132 8.66667 12.7831C8.66667 11.653 9.12321 10.5692 9.93587 9.77008C10.7485 8.97098 11.8507 8.52205 13 8.52205Z" fill="url(#paint0_linear_64_11)"/>
+                        <svg class="acara-card-icon" xmlns="http://www.w3.org/2000/svg" width="26" height="34"
+                             viewBox="0 0 26 34" fill="none">
+                            <path
+                                d="M14.6047 33.236C18.0781 28.9617 26 18.602 26 12.7831C26 5.72575 20.1771 0 13 0C5.82292 0 0 5.72575 0 12.7831C0 18.602 7.92188 28.9617 11.3953 33.236C12.2281 34.2547 13.7719 34.2547 14.6047 33.236ZM13 8.52205C14.1493 8.52205 15.2515 8.97098 16.0641 9.77008C16.8768 10.5692 17.3333 11.653 17.3333 12.7831C17.3333 13.9132 16.8768 14.997 16.0641 15.7961C15.2515 16.5952 14.1493 17.0441 13 17.0441C11.8507 17.0441 10.7485 16.5952 9.93587 15.7961C9.12321 14.997 8.66667 13.9132 8.66667 12.7831C8.66667 11.653 9.12321 10.5692 9.93587 9.77008C10.7485 8.97098 11.8507 8.52205 13 8.52205Z"
+                                fill="url(#paint0_linear_64_11)"/>
                             <defs>
-                                <linearGradient id="paint0_linear_64_11" x1="-3.05882" y1="3.4968e-08" x2="20.6418" y2="34.2681" gradientUnits="userSpaceOnUse">
+                                <linearGradient id="paint0_linear_64_11" x1="-3.05882" y1="3.4968e-08" x2="20.6418"
+                                                y2="34.2681" gradientUnits="userSpaceOnUse">
                                     <stop stop-color="#F86F03"/>
                                     <stop offset="1" stop-color="#FD9615"/>
                                 </linearGradient>
@@ -276,7 +281,8 @@
     <circle cx="103.5" cy="103.5" r="103.5" fill="#F86F03"/>
 </svg>
 
-<img src="{{asset('img/Xiao Mi Le.png')}}" class="absolute w-[300px] md:w-[400px] right-0 bottom-0 -translate-y-20 md:-translate-y-5" alt="Xiao Mi Le">
+<img src="{{asset('img/Xiao Mi Le.png')}}"
+     class="absolute w-[300px] md:w-[400px] right-0 bottom-0 -translate-y-20 md:-translate-y-5" alt="Xiao Mi Le">
 
 <script>
     function showTime() {

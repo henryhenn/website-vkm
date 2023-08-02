@@ -206,7 +206,6 @@
                                                         <i class="bx bx-trash"></i>
                                                     </button>
                                                 @endcan
-
                                             </div>
                                         </td>
                                     </tr>
@@ -304,6 +303,10 @@
                         <button type="submit" class="btn btn-primary">Update</button>
                     </div>
                 </form>
+                <div class="d-flex mt-4 ms-2">
+                    <p class="me-4">Ditambahkan oleh: <span class="fw-bold" id="user_add"></span></p>
+                    <p>Diupdate oleh: <span class="fw-bold" id="user_update"></span></p>
+                </div>
             </div>
         </div>
     </div>

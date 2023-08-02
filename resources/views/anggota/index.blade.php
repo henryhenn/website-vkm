@@ -229,8 +229,8 @@
                                         <td id="anggotaId">{{$data->id}}</td>
                                         <td>{{$data->nama_indo}}</td>
                                         <td>
-                                            {{$data->nama_mandarin_hanzi}}
-                                            <p>{{$data->nama_mandarin_pinyin}}</p>
+                                            <span class="text-mandarin fs-5">{{$data->nama_mandarin_hanzi}}</span>
+                                            <span class="d-block">{{$data->nama_mandarin_pinyin}}</span>
                                         </td>
                                         <td>{{$data->telp}}</td>
                                         <td>

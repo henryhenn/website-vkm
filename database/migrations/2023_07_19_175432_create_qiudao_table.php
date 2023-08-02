@@ -20,7 +20,7 @@ return new class extends Migration
             $table->date('tgl_indo')->nullable();
             $table->string('bln_imlek', 2)->nullable();
             $table->string('tgl_imlek', 2)->nullable();
-            $table->string('jenis_kelamin', 1)->nullable();
+            $table->string('jenis_kelamin', 10)->nullable();
             $table->text('alamat')->nullable();
             $table->string('telp', 20)->nullable();
             $table->string('pengajak')->nullable();

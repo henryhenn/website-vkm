@@ -5,6 +5,7 @@ use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\QiuDaoController;
 use App\Http\Controllers\QuotesController;
 use App\Http\Controllers\SidebarController;
 use Illuminate\Support\Facades\Auth;
@@ -37,6 +38,8 @@ Route::middleware('auth')->group(function () {
     Route::prefix('data')->group(function () {
         Route::resource('acara', AcaraController::class)->except('edit', 'create');
         Route::put('acara/active/{acara:id}', [AcaraController::class, 'updateActive'])->name('acara_active.update');
+
+        Route::resource('qiudao', QiuDaoController::class)->except('edit', 'create');
     });
 
     Route::post('anggota/update-password', [AnggotaController::class, 'updatePassword'])->name('anggota.updatePassword');
@@ -46,7 +49,8 @@ Route::middleware('auth')->group(function () {
 //    jQuery Routes
     Route::get('get-sidebar-menu', SidebarController::class);
     Route::get('get-user-quote', [QuotesController::class, 'getQuote']);
-    Route::post('/get-status', [AnggotaController::class, 'getStatus']);
+    Route::post('get-status', [AnggotaController::class, 'getStatus']);
     Route::get('get-anggota/{user:id}', [AnggotaController::class, 'getAnggotaById']);
     Route::get('get-acara/{acara:id}', [AcaraController::class, 'getAcaraById']);
+    Route::get('get-qiudao/{qiudao:id}', [QiuDaoController::class, 'getQiuDaoById']);
 });

@@ -19,6 +19,8 @@ function getAcaraById(status, id) {
 
 function addToEditForm(data) {
     $("#editModalTitle").text(data.acara)
+    $("#editAcaraModal #user_add").text(data.user_add)
+    $("#editAcaraModal #user_update").text(data.user_update)
     $("#edit-form").attr('action', () => `/data/acara/${data.id}`)
     $("#edit-form #acara").val(data.acara)
     $("#edit-form #tgl").val(data.tgl)

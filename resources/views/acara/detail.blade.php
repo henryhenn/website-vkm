@@ -14,8 +14,6 @@
                         <img src="{{asset($acara->image)}}"
                              alt="{{$acara->acara}}" width="400px"
                              class="rounded">
-
-                        <p id="quote" class="mb-2"></p>
                     </div>
 
                     <div class="row mt-3">
