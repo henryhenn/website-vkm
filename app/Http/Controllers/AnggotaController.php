@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\FormatTableAnggotaExport;
 use App\Http\Requests\AnggotaRequest;
+use App\Imports\AnggotaImport;
 use App\Models\SubMenu;
 use App\Models\User;
-use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Password;
+use Maatwebsite\Excel\Facades\Excel;
+use Maatwebsite\Excel\Validators\ValidationException;
 use Spatie\Permission\Models\Permission;
 
 class AnggotaController extends Controller
@@ -18,7 +20,7 @@ class AnggotaController extends Controller
     {
         $this->middleware('permission:View Daftar Anggota');
 
-        $anggota = User::query()
+        $anggota = DB::table('users')
             ->select('id', 'nama_indo', 'nama_mandarin_hanzi', 'nama_mandarin_pinyin', 'telp', 'active', 'created_at')
             ->paginate(100);
 
@@ -56,9 +58,9 @@ class AnggotaController extends Controller
     {
         $this->middleware('permission:Delete Daftar Anggota');
 
-        User::find($id)->delete();
+        User::findOrFail($id)->delete();
 
-        return back()->with('message', 'Data Anggota Berhasil Dihapus!');
+        return back()->with('message', 'Data anggota berhasil dihapus!');
     }
 
     public function updatePassword(Request $request)
@@ -98,6 +100,38 @@ class AnggotaController extends Controller
 
         return to_route('anggota.index')->with('message', 'Privilege berhasil diset!');
     }
+
+    public function export()
+    {
+        $this->middleware('permission:Create Daftar Anggota');
+
+        return Excel::download(new FormatTableAnggotaExport, 'format-anggota.xlsx');
+    }
+
+    public function import(Request $request)
+    {
+        $this->middleware('permission:Create Daftar Anggota');
+
+        $this->validate($request, [
+            'file' => 'required|file|mimes:xls,xlsx,csv'
+        ], [
+            'file.required' => 'Input File wajib diisi!',
+            'file.file' => 'Input File harus berupa file!',
+            'file.mimes' => 'Input File harus berformat: .xlsx, .xls, .csv!',
+        ]);
+
+        try {
+            Excel::import(new AnggotaImport(), $request->file('file'));
+
+            return back()->with('message', 'Data anggota berhasil diimport!');
+        } catch (\InvalidArgumentException $e) {
+            return back()->withErrors('Ada error pada format tanggal lahir.');
+        }
+    }
+
+    /**
+     * jQuery Methods
+     */
 
     public function getStatus()
     {

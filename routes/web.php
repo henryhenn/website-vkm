@@ -33,6 +33,9 @@ Route::middleware('auth')->group(function () {
         Route::resource('anggota', AnggotaController::class)->except('edit', 'create');
         Route::get('anggota/{user:id}/permissions', [AnggotaController::class, 'permissions'])->name('permissions.index');
         Route::post('anggota/{user:id}/permissions', [AnggotaController::class, 'setPermissions'])->name('permissions.store');
+
+        Route::get('export-format-excel-anggota', [AnggotaController::class, 'export'])->name('anggota.export-format');
+        Route::post('anggota/import', [AnggotaController::class, 'import'])->name('anggota.import');
     });
 
     Route::prefix('data')->group(function () {
@@ -40,6 +43,8 @@ Route::middleware('auth')->group(function () {
         Route::put('acara/active/{acara:id}', [AcaraController::class, 'updateActive'])->name('acara_active.update');
 
         Route::resource('qiudao', QiuDaoController::class)->except('edit', 'create');
+        Route::get('export-format-excel-qiudao', [QiuDaoController::class, 'export'])->name('qiudao.export-format');
+        Route::post('qiudao/import', [QiuDaoController::class, 'import'])->name('qiudao.import');
     });
 
     Route::post('anggota/update-password', [AnggotaController::class, 'updatePassword'])->name('anggota.updatePassword');

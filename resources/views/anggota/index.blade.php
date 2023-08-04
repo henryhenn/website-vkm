@@ -14,14 +14,24 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between">
                         <h5 class="card-title text-primary">Daftar Anggota</h5>
-                        <button
-                            type="button"
-                            class="btn btn-primary"
-                            data-bs-toggle="modal"
-                            data-bs-target="#tambahAnggotaModal"
-                        >
-                            Tambah Anggota Baru
-                        </button>
+                        <div class="d-flex">
+                            <button
+                                type="button"
+                                class="btn btn-primary me-2"
+                                data-bs-toggle="modal"
+                                data-bs-target="#tambahAnggotaModal"
+                            >
+                                Tambah Data
+                            </button>
+                            <button
+                                type="button"
+                                class="btn btn-success"
+                                data-bs-toggle="modal"
+                                data-bs-target="#importAnggotaModal"
+                            >
+                                Import
+                            </button>
+                        </div>
 
                         <!-- Modal -->
                         <div class="modal fade" id="tambahAnggotaModal" tabindex="-1" aria-hidden="true">
@@ -39,6 +49,13 @@
                                     <form action="{{route('anggota.store')}}" method="post" id="anggota-form">
                                         @csrf
                                         <div class="modal-body">
+                                            <div class="row mb-5 col">
+                                                <div class="mb-3">
+                                                    <label for="formFile" class="form-label">Import Data Anggota dari
+                                                        Excel</label>
+                                                    <input class="form-control" type="file" id="formFile"/>
+                                                </div>
+                                            </div>
                                             <div class="row">
                                                 <div class="col mb-3">
                                                     <div class="form-floating">
@@ -199,6 +216,47 @@
                                                 Batal
                                             </button>
                                             <button type="submit" class="btn btn-primary">Tambah</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal fade" id="importAnggotaModal" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="modalCenterTitle">Import Anggota dari Excel</h5>
+                                        <button
+                                            type="button"
+                                            class="btn-close"
+                                            data-bs-dismiss="modal"
+                                            aria-label="Close"
+                                        ></button>
+                                    </div>
+                                    <form action="{{route('anggota.import')}}" method="post" enctype="multipart/form-data">
+                                        @csrf
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class=" col mb-3">
+                                                    <a href="{{route('anggota.export-format')}}" class="btn btn-primary">Download Format Excel</a>
+                                                </div>
+                                            </div>
+                                            <div class="row col">
+                                                <div class="mb-3">
+                                                    <label for="file" class="form-label">Import Data Anggota dari
+                                                        Excel</label>
+                                                    <input class="form-control" name="file" type="file" id="file"/>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-outline-secondary"
+                                                    data-bs-dismiss="modal">
+                                                Batal
+                                            </button>
+                                            <button type="submit" class="btn btn-success">Import</button>
                                         </div>
                                     </form>
                                 </div>

@@ -14,15 +14,29 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between">
                         <h5 class="card-title text-primary">Data Qiu Dao</h5>
-                        <button
-                            type="button"
-                            class="btn btn-primary"
-                            data-bs-toggle="modal"
-                            data-bs-target="#tambahQiuDaoModal
+                        @can('Create Qiu Dao')
+                            <div class="d-flex">
+
+                                <button
+                                    type="button"
+                                    class="btn btn-primary me-2"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#tambahQiuDaoModal
                             "
-                        >
-                            Tambah Data Qiu Dao Baru
-                        </button>
+                                >
+                                    Tambah Data Qiu Dao Baru
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="btn btn-success"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#importQiuDaoModal"
+                                >
+                                    Import
+                                </button>
+                            </div>
+                        @endcan
 
                         <!-- Modal -->
                         <div class="modal fade" id="tambahQiuDaoModal" tabindex="-1" aria-hidden="true">
@@ -270,6 +284,49 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="modal fade" id="importQiuDaoModal" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="modalCenterTitle">Import Anggota dari Excel</h5>
+                                        <button
+                                            type="button"
+                                            class="btn-close"
+                                            data-bs-dismiss="modal"
+                                            aria-label="Close"
+                                        ></button>
+                                    </div>
+                                    <form action="{{route('qiudao.import')}}" method="post"
+                                          enctype="multipart/form-data">
+                                        @csrf
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class=" col mb-3">
+                                                    <a href="{{route('qiudao.export-format')}}" class="btn btn-primary">Download
+                                                        Format Excel</a>
+                                                </div>
+                                            </div>
+                                            <div class="row col">
+                                                <div class="mb-3">
+                                                    <label for="file" class="form-label">Import Data Qiu Dao dari
+                                                        Excel</label>
+                                                    <input class="form-control" name="file" type="file" id="file"/>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-outline-secondary"
+                                                    data-bs-dismiss="modal">
+                                                Batal
+                                            </button>
+                                            <button type="submit" class="btn btn-success">Import</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     @foreach($errors->all() as $error)
@@ -435,7 +492,7 @@
                                         class="form-control">
                                     <option value="" disabled>--BULAN IMLEK--</option>
                                     @for($i = 1; $i <= 12; $i++)
-                                        <option value="{{$i}}" >{{$i}}</option>
+                                        <option value="{{$i}}">{{$i}}</option>
                                     @endfor
                                 </select>
                             </div>

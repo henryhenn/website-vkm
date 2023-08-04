@@ -12,6 +12,7 @@
 
                     <div class="row mt-4">
                         <div class="col-6">
+                            <h6>No. Urut</h6>
                             <h6>Nama</h6>
                             <h6>{{$qiudao->nama_mandarin_hanzi && $qiudao->nama_mandarin_pinyin ? 'Nama Mandarin' : ''}}</h6>
                             <h6>Tanggal Indonesia</h6>
@@ -25,6 +26,7 @@
                             <h6>Amal</h6>
                         </div>
                         <div class="col-6">
+                            <h6 class="fw-bold">{{$qiudao->no_urut}}</h6>
                             <h6 class="fw-bold">{{$qiudao->nama_indo}}</h6>
                             <h6 class="fw-bold">
                                 <span class="text-mandarin">{{$qiudao->nama_mandarin_hanzi}}</span>
@@ -37,14 +39,24 @@
                             <h6 class="fw-bold">{{$qiudao->pengajak}}</h6>
                             <h6 class="fw-bold">{{$qiudao->penanggung}}</h6>
                             <h6 class="fw-bold">{{$qiudao->pandita}}</h6>
-                            <h6 class="fw-bold"><span id="amal"></span></h6>
+                            <h6 class="fw-bold">
+                                @can('Control Qiu Dao')
+                                    <span id="amal"></span>
+                                @else
+                                    ***
+                                @endcan
+                            </h6>
                         </div>
                     </div>
                 </div>
 
                 <div class="card-footer d-flex">
-                    <h6 class="me-3">Ditambahkan oleh: <span class="fw-bold">{{$qiudao->user_add . ' | ' . tgl_indo(convert_date($qiudao->created_at))  . ' ' . $qiudao->created_at->format('H:i')}}</span></h6>
-                    <h6>Diupdate oleh: <span class="fw-bold">{{$qiudao->user_update . ' | ' .  tgl_indo(convert_date($qiudao->updated_at)) . ' ' . $qiudao->updated_at->format('H:i')}}</span></h6>
+                    <h6 class="me-3">Ditambahkan oleh: <span
+                            class="fw-bold">{{$qiudao->user_add . ' | ' . tgl_indo(convert_date($qiudao->created_at))  . ' ' . $qiudao->created_at->format('H:i')}}</span>
+                    </h6>
+                    <h6>Diupdate oleh: <span
+                            class="fw-bold">{{$qiudao->user_update . ' | ' .  tgl_indo(convert_date($qiudao->updated_at)) . ' ' . $qiudao->updated_at->format('H:i')}}</span>
+                    </h6>
                 </div>
             </div>
         </div>

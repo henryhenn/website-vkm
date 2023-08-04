@@ -109,11 +109,11 @@ function generatePass() {
 
 function sendToDeleteModal(data) {
     $("#anggotaName").text(data.nama_indo)
-    $("#deleteForm").attr("action", () => `/anggota/${data.id}`)
+    $("#deleteForm").attr("action", () => `/admin/anggota/${data.id}`)
 }
 
 function sendToEditModal(data) {
-    $("#edit-anggota-form").attr('action', () => `/anggota/${data.id}`)
+    $("#edit-anggota-form").attr('action', () => `/admin/anggota/${data.id}`)
     $("#editFormTitle").text(data.nama_indo)
     $("#editAnggotaModal #user_add").text(data.user_add)
     $("#editAnggotaModal #user_update").text(data.user_update)
