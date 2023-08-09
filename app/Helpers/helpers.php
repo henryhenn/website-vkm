@@ -4,6 +4,7 @@ namespace App\Helpers;
 
 use App\Models\Menu;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 function convert_date(string $date): string
 {
@@ -109,4 +110,10 @@ function hari_tanggal($tanggal)
     $pecahkan = explode('-', $tanggal);
 
     return $hari_ini . ', ' . $pecahkan[2] . '-' . $bulan[(int)$pecahkan[1]] . '-' . $pecahkan[0];
+}
+
+function count_data($value) {
+    return DB::table('users')
+        ->where('status_ketuhanan', 'like', '%' . $value . '%')
+        ->count();
 }

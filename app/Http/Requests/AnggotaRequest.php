@@ -22,9 +22,9 @@ class AnggotaRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nama_indo' => 'required|sometimes|string|max:100',
-            'nama_mandarin_hanzi' => 'nullable|string|max:100',
-            'nama_mandarin_pinyin' => 'nullable|string|max:100',
+            'nama_indo' => 'required|unique:users,nama_indo|sometimes|string|max:100',
+            'nama_mandarin_hanzi' => 'nullable|unique:users,nama_mandarin_hanzi|string|max:100',
+            'nama_mandarin_pinyin' => 'nullable|unique:users,nama_mandarin_pinyin|string|max:100',
             'tempat_lahir' => 'required|sometimes|string|max:50',
             'tgl_lahir' => 'required|sometimes|date',
             'alamat' => 'required|sometimes|string',

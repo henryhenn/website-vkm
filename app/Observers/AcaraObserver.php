@@ -3,17 +3,20 @@
 namespace App\Observers;
 
 use App\Models\Acara;
+use App\Models\SekolahMinggu;
+use App\Traits\UsernameTrait;
 
 class AcaraObserver
 {
-    protected function username()
-    {
-        return auth()->user()->username;
-    }
+    use UsernameTrait;
 
-    public function saving(Acara $acara)
+    public function creating(Acara $acara)
     {
         $acara->user_add = $this->username();
+    }
+
+    public function updating(Acara $acara)
+    {
         $acara->user_update = $this->username();
     }
 }

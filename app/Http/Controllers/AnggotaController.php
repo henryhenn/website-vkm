@@ -125,7 +125,7 @@ class AnggotaController extends Controller
 
             return back()->with('message', 'Data anggota berhasil diimport!');
         } catch (\InvalidArgumentException $e) {
-            return back()->withErrors('Ada error pada format tanggal lahir.');
+            return back()->withErrors('Ada error: ' . $e->getMessage());
         }
     }
 

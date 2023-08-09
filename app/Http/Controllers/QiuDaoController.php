@@ -86,13 +86,10 @@ class QiuDaoController extends Controller
         }
     }
 
-    public function getQiuDaoById(string $id)
+    public function getQiuDaoById(QiuDao $qiudao)
     {
-        $qiuDao = DB::table('qiudao')
-            ->find($id);
-
         return response()->json([
-            'data' => $qiuDao,
+            'data' => $qiudao,
             'status' => Response::HTTP_ACCEPTED
         ]);
     }

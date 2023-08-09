@@ -1,4 +1,4 @@
-@php use function App\Helpers\convert_date; @endphp
+@php use function App\Helpers\convert_date;use function App\Helpers\count_data; @endphp
 @extends('layouts.app', ['title' => 'Dashboard'])
 
 @section('content')
@@ -97,7 +97,7 @@
                                 </div>
                             </div>
                             <span class="fw-semibold d-block mb-1">Jumlah Pandita Madya</span>
-                            <h3 class="card-title text-nowrap mb-2">0</h3>
+                            <h3 class="card-title text-nowrap mb-2">{{count_data('Pandita Madya')}}</h3>
                         </div>
                     </div>
                 </div>
@@ -111,7 +111,7 @@
                                 </div>
                             </div>
                             <span class="fw-semibold d-block mb-1">Jumlah Buddha Siswa</span>
-                            <h3 class="card-title mb-2">0</h3>
+                            <h3 class="card-title mb-2">{{count_data('Buddha Siswa')}}</h3>
                         </div>
                     </div>
                 </div>
@@ -130,7 +130,7 @@
                                 </div>
                             </div>
                             <span class="fw-semibold d-block mb-1">Jumlah Umat</span>
-                            <h3 class="card-title mb-2">0</h3>
+                            <h3 class="card-title mb-2">{{count_data('Umat')}}</h3>
                         </div>
                     </div>
                 </div>
@@ -147,7 +147,7 @@
                                 </div>
                             </div>
                             <span class="fw-semibold d-block mb-1">Jumlah Aktivis</span>
-                            <h3 class="card-title text-nowrap mb-1">0</h3>
+                            <h3 class="card-title text-nowrap mb-1">{{count_data('Aktivis')}}</h3>
                         </div>
                     </div>
                 </div>

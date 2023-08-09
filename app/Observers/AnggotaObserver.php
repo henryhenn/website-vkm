@@ -3,14 +3,12 @@
 namespace App\Observers;
 
 use App\Models\User;
+use App\Traits\UsernameTrait;
 use Spatie\Permission\Models\Role;
 
 class AnggotaObserver
 {
-    protected function username()
-    {
-        return auth()->user()->username;
-    }
+    use UsernameTrait;
 
     public function creating(User $user)
     {

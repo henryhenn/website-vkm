@@ -4,10 +4,12 @@ namespace App\Providers;
 
 use App\Models\Acara;
 use App\Models\QiuDao;
+use App\Models\SekolahMinggu;
 use App\Models\User;
 use App\Observers\AcaraObserver;
 use App\Observers\AnggotaObserver;
 use App\Observers\QiuDaoObserver;
+use App\Observers\SekolahMingguObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -34,6 +36,7 @@ class EventServiceProvider extends ServiceProvider
         User::observe(AnggotaObserver::class);
         Acara::observe(AcaraObserver::class);
         QiuDao::observe(QiuDaoObserver::class);
+        SekolahMinggu::observe(SekolahMingguObserver::class);
     }
 
     /**

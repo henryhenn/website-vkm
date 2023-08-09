@@ -62,7 +62,7 @@ class QiuDaoRequest extends FormRequest
             'pandita.required' => 'Nama pandita wajib diisi!',
             'pandita.string' => 'Nama pandita harus berupa huruf!',
             'amal.required' => 'Amal wajib diisi!',
-            'amal.integer' => 'Amal harus berupa huruf!',
+            'amal.integer' => 'Amal harus berupa angka!',
         ];
     }
 }

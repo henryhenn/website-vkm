@@ -16,12 +16,17 @@ class MasterValueSeeder extends Seeder
         DB::table('mst_value')->insert([
             [
                 'kondisi' => 'status_ketuhanan',
-                'desc' => 'Tz',
+                'desc' => 'Pandita',
                 'active' => 1
             ],
             [
                 'kondisi' => 'status_ketuhanan',
-                'desc' => 'Fy',
+                'desc' => 'Pandita Madya',
+                'active' => 1
+            ],
+            [
+                'kondisi' => 'status_ketuhanan',
+                'desc' => 'Buddha Siswa',
                 'active' => 1
             ],
             [
@@ -32,6 +37,11 @@ class MasterValueSeeder extends Seeder
             [
                 'kondisi' => 'status_ketuhanan',
                 'desc' => 'Aktivis',
+                'active' => 1
+            ],
+            [
+                'kondisi' => 'status_ketuhanan',
+                'desc' => 'Umat',
                 'active' => 1
             ],
             [

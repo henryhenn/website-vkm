@@ -49,13 +49,6 @@
                                     <form action="{{route('anggota.store')}}" method="post" id="anggota-form">
                                         @csrf
                                         <div class="modal-body">
-                                            <div class="row mb-5 col">
-                                                <div class="mb-3">
-                                                    <label for="formFile" class="form-label">Import Data Anggota dari
-                                                        Excel</label>
-                                                    <input class="form-control" type="file" id="formFile"/>
-                                                </div>
-                                            </div>
                                             <div class="row">
                                                 <div class="col mb-3">
                                                     <div class="form-floating">

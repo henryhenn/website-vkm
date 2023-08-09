@@ -28,7 +28,7 @@ class SubMenuSeeder extends Seeder
                     'menu_id' => 1,
                     'sub_menu' => 'Akses Grup',
                     'url' => '/admin/groupAccess',
-                    'icon' => 'bx bx-universal-access',
+                    'icon' => 'bx bx-cog',
                     'active' => 1,
                     'user_add' => 'admin',
                     'user_update' => 'admin'
@@ -74,7 +74,7 @@ class SubMenuSeeder extends Seeder
                     'menu_id' => 3,
                     'sub_menu' => 'Qiu Dao',
                     'url' => '/data/qiudao',
-                    'icon' => 'bx bx-',
+                    'icon' => 'bx bx-id-card',
                     'active' => 1,
                     'user_add' => 'admin',
                     'user_update' => 'admin'
@@ -98,10 +98,19 @@ class SubMenuSeeder extends Seeder
                     'user_update' => 'admin'
                 ],
                 [
+                    'menu_id' => 3,
+                    'sub_menu' => 'Sekolah Minggu',
+                    'url' => '/data/sekolah-minggu',
+                    'icon' => 'bx bx-user',
+                    'active' => 1,
+                    'user_add' => 'admin',
+                    'user_update' => 'admin'
+                ],
+                [
                     'menu_id' => 4,
                     'sub_menu' => 'Album',
                     'url' => '/lagu/album',
-                    'icon' => 'bx bx-user-account',
+                    'icon' => 'bx bx-album',
                     'active' => 1,
                     'user_add' => 'admin',
                     'user_update' => 'admin'
@@ -111,7 +120,7 @@ class SubMenuSeeder extends Seeder
                     'menu_id' => 4,
                     'sub_menu' => 'Dao Ge',
                     'url' => '/lagu/daoge',
-                    'icon' => 'bx bx-user-account',
+                    'icon' => 'bx bx-music',
                     'active' => 1,
                     'user_add' => 'admin',
                     'user_update' => 'admin'

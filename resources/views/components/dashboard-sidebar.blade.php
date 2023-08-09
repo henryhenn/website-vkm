@@ -23,6 +23,7 @@
             @foreach($menu->subMenus as $sub)
                 <li class="menu-item {{request()->url() == url($sub->url) ? 'active' : ''}}">
                     <a href="{{url($sub->url)}}" class="menu-link">
+                        <i class="menu-icon tf-icons {{$sub->icon}}"></i>
                         <div>{{$sub->sub_menu}}</div>
                     </a>
                 </li>
