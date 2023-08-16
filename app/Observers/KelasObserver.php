@@ -3,9 +3,10 @@
 namespace App\Observers;
 
 use App\Models\QiuDao;
+use App\Models\SekolahMinggu;
 use App\Traits\UsernameTrait;
 
-class QiuDaoObserver
+class KelasObserver
 {
     use UsernameTrait;
 
@@ -14,7 +15,7 @@ class QiuDaoObserver
         $qiuDao->user_add = $this->username();
     }
 
-    public function updating(QiuDao $qiuDao)
+    public function updating(SekolahMinggu $qiuDao)
     {
         $qiuDao->user_update = $this->username();
     }

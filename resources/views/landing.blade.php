@@ -82,7 +82,7 @@
     </div>
 
     <div class="flex flex-col gap-6 md:gap-0 md:flex-row md:space-x-4 mt-6">
-        @foreach($acara as $data)
+        @forelse($acara as $data)
             <div class="acara-card">
                 @if($data->image)
                     <img src="{{asset('storage/' . $data->image)}}"
@@ -174,7 +174,9 @@
                     </div>
                 </div>
             </div>
-        @endforeach
+            @empty
+            <h3 class="text-3xl font-bold text-center">Tidak ada acara terbaru.</h3>
+        @endforelse
         <div
             class="w-1/2 md:w-[25%] py-4 h-auto md:h-[280px] align-middle flex flex-col justify-center backdrop-blur-[12px] border rounded-3xl border-[#F86F03] bg-gradient-to-b from-[#F8F8F8]/25 to-[#F8F8F8]/75 text-center font-bold"
         >

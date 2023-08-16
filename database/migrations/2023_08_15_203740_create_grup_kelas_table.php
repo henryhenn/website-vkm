@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('grup_kelas', function (Blueprint $table) {
             $table->id();
             $table->string('grup_kelas');
+            $table->string('user_add', 100)->nullable();
+            $table->string('user_update', 100)->nullable();
             $table->timestamps();
         });
     }

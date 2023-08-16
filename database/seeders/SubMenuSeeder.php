@@ -99,6 +99,24 @@ class SubMenuSeeder extends Seeder
                 ],
                 [
                     'menu_id' => 3,
+                    'sub_menu' => 'Grup Kelas',
+                    'url' => '/data/grup-kelas',
+                    'icon' => 'bx bx-bookmarks',
+                    'active' => 1,
+                    'user_add' => 'admin',
+                    'user_update' => 'admin'
+                ],
+                [
+                    'menu_id' => 3,
+                    'sub_menu' => 'Kelas',
+                    'url' => '/data/kelas',
+                    'icon' => 'bx bx-bookmark',
+                    'active' => 1,
+                    'user_add' => 'admin',
+                    'user_update' => 'admin'
+                ],
+                [
+                    'menu_id' => 3,
                     'sub_menu' => 'Sekolah Minggu',
                     'url' => '/data/sekolah-minggu',
                     'icon' => 'bx bx-user',
