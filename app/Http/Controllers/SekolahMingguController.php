@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\FormatTableSekolahMingguExport;
 use App\Http\Requests\SekolahMingguRequest;
+use App\Imports\SekolahMingguImport;
 use App\Models\SekolahMinggu;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SekolahMingguController extends Controller
 {
@@ -15,7 +19,7 @@ class SekolahMingguController extends Controller
 
         $anak = DB::table('sekolah_minggu')
             ->orderBy('nama')
-            ->select('id', 'nama', 'telp', 'nama_ortu', 'created_at')
+            ->select('id', 'nama', 'telp', 'nama_ortu', 'created_at', 'kelas_cth')
             ->paginate(100);
 
         return view('smb.index', compact('anak'));
@@ -53,6 +57,34 @@ class SekolahMingguController extends Controller
         $sekolah_minggu->delete();
 
         return back()->with('message', 'Data Sekolah Minggu berhasil dihapus!');
+    }
+
+    public function export()
+    {
+        $this->middleware('permission:Create Sekolah Minggu');
+
+        return Excel::download(new FormatTableSekolahMingguExport(), 'format-sekolah_minggu.xlsx');
+    }
+
+    public function import(Request $request)
+    {
+        $this->middleware('permission:Create Sekolah Minggu');
+
+        $this->validate($request, [
+            'file' => 'required|file|mimes:xls,xlsx,csv'
+        ], [
+            'file.required' => 'Input File wajib diisi!',
+            'file.file' => 'Input File harus berupa file!',
+            'file.mimes' => 'Input File harus berformat: .xlsx, .xls, .csv!',
+        ]);
+
+        try {
+            Excel::import(new SekolahMingguImport(), $request->file('file'));
+
+            return back()->with('message', 'Data Sekolah Minggu berhasil diimport!');
+        } catch (\InvalidArgumentException $e) {
+            return back()->withErrors('Ada error.');
+        }
     }
 
     public function getAnakById(SekolahMinggu $anak)

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('alamat');
             $table->string('kelas_cth', 20);
             $table->string('telp', 14);
-            $table->string('nama_ortu', 10);
+            $table->string('nama_ortu', 100);
             $table->string('status_qiu_dao', 10);
             $table->string('user_add', 10);
             $table->string('user_update', 10);

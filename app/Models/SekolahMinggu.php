@@ -13,4 +13,8 @@ class SekolahMinggu extends Model
         'created_at',
         'updated_at',
     ];
+
+    protected $casts = [
+        'created_at' => 'date:d-m-Y'
+    ];
 }

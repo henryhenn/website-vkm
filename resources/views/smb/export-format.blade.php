@@ -11,31 +11,23 @@
 <table>
     <thead>
     <tr>
-        <th>Nama Anggota</th>
-        <th>Nama Mandarin (Hanzi)</th>
-        <th>Nama Mandarin (Pinyin)</th>
-        <th>Tempat Lahir</th>
+        <th>Nama Lengkap</th>
         <th>Tanggal Lahir</th>
         <th>Alamat</th>
+        <th>Kelas Contoh</th>
         <th>No. Telepon</th>
-        <th>Gol. Darah</th>
-        <th>Status Ketuhanan</th>
-        <th>Status Vegetarian</th>
+        <th>Nama Orang Tua</th>
         <th>Status Qiu Dao</th>
     </tr>
     </thead>
     <tbody>
     <tr>
-        <th>nama Indonesia</th>
-        <th>nama mandarin (hanzi)</th>
-        <th>nama mandarin (pinyin)</th>
-        <th>tempat lahir</th>
+        <th>nama lengkap</th>
         <th>tanggal/bulan/tahun</th>
         <th>Alamat</th>
+        <th>Kelas</th>
         <th>1234567890</th>
-        <th>A/B/AB/O/-</th>
-        <th>Tz/Fy/Pelaksana/Aktivis/Umat</th>
-        <th>Sudah/Belum/Belajar/Sudah Ikrar</th>
+        <th>nama orang tua</th>
         <th>Sudah/Belum</th>
     </tr>
     </tbody>

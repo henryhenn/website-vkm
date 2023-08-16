@@ -22,7 +22,7 @@
                             <h6 class="fw-bold">{{$sekolah_minggu->nama}}</h6>
                             <h6 class="fw-bold">{{tgl_indo(convert_date($sekolah_minggu->tgl_lahir))}}</h6>
                             <h6 class="fw-bold">{{$sekolah_minggu->alamat}}</h6>
-                            <h6 class="fw-bold">{{$sekolah_minggu->kelas}}</h6>
+                            <h6 class="fw-bold">{{$sekolah_minggu->kelas_cth}}</h6>
                             <h6 class="fw-bold">{{$sekolah_minggu->telp}}</h6>
                             <h6 class="fw-bold">{{$sekolah_minggu->nama_ortu}}</h6>
                             <h6 class="fw-bold">{{$sekolah_minggu->status_qiu_dao}}</h6>

@@ -228,7 +228,7 @@
                                     <th>Nama Lengkap</th>
                                     <th>No. Telepon</th>
                                     <th>Nama Orang Tua</th>
-                                    <th>Dibuat pada</th>
+                                    <th>Kelas</th>
                                     <th>Aksi</th>
                                 </tr>
                                 </thead>
@@ -239,7 +239,7 @@
                                         <td>{{$data->nama}}</td>
                                         <td>{{$data->telp}}</td>
                                         <td>{{$data->nama_ortu}}</td>
-                                        <td>{{tgl_indo(convert_date($data->created_at)) . ' | ' . convert_date_to_time($data->created_at)}}</td>
+                                        <td>{{$data->kelas_cth}}</td>
                                         <td>
                                             <div class="d-flex">
                                                 @can('View Sekolah Minggu')
@@ -449,8 +449,9 @@
                     </div>
                 </form>
                 <div class="d-flex mt-4 ms-2">
-                    <p class="me-4">Ditambahkan oleh: <span class="fw-bold" id="user_add"></span></p>
-                    <p>Diupdate oleh: <span class="fw-bold" id="user_update"></span></p>
+                    <p>Ditambahkan oleh: <span class="fw-bold" id="user_add"></span></p>
+                    <p class="mx-3">Diupdate oleh: <span class="fw-bold" id="user_update"></span></p>
+                    <p>Dibuat pada: <span class="fw-bold" id="created_at"></span></p>
                 </div>
             </div>
         </div>

@@ -33,8 +33,8 @@ Route::middleware('auth')->group(function () {
         Route::get('anggota/{user:id}/permissions', [AnggotaController::class, 'permissions'])->name('permissions.index');
         Route::post('anggota/{user:id}/permissions', [AnggotaController::class, 'setPermissions'])->name('permissions.store');
 
-        Route::get('anggota/export', [AnggotaController::class, 'export'])->name('anggota.export-format');
-        Route::post('anggota/import', [AnggotaController::class, 'import'])->name('anggota.import');
+        Route::get('export/anggota', [AnggotaController::class, 'export'])->name('anggota.export-format');
+        Route::post('import/anggota', [AnggotaController::class, 'import'])->name('anggota.import');
     });
 
     Route::prefix('data')->group(function () {
@@ -42,12 +42,12 @@ Route::middleware('auth')->group(function () {
         Route::put('acara/active/{acara:id}', [AcaraController::class, 'updateActive'])->name('acara_active.update');
 
         Route::resource('qiudao', QiuDaoController::class)->except('edit', 'create');
-        Route::get('qiudao/export', [QiuDaoController::class, 'export'])->name('qiudao.export-format');
-        Route::post('qiudao/import', [QiuDaoController::class, 'import'])->name('qiudao.import');
+        Route::get('export/qiudao', [QiuDaoController::class, 'export'])->name('qiudao.export-format');
+        Route::post('import/qiudao', [QiuDaoController::class, 'import'])->name('qiudao.import');
 
         Route::resource('sekolah-minggu', SekolahMingguController::class)->except('edit', 'create');
-        Route::get('sekolah-minggu/export', [SekolahMingguController::class, 'export'])->name('sekolah-minggu.export-format');
-        Route::post('sekolah-minggu/import', [SekolahMingguController::class, 'import'])->name('sekolah-minggu.import');
+        Route::get('export/sekolah-minggu', [SekolahMingguController::class, 'export'])->name('sekolah-minggu.export-format');
+        Route::post('import/sekolah-minggu', [SekolahMingguController::class, 'import'])->name('sekolah-minggu.import');
     });
 
     Route::post('anggota/update-password', [AnggotaController::class, 'updatePassword'])->name('anggota.updatePassword');

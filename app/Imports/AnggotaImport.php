@@ -47,13 +47,13 @@ class AnggotaImport implements ToCollection, WithHeadingRow, WithChunkReading, W
     public function rules(): array
     {
         return [
-            'nama_anggota' => 'required|unique:users,nama_indo|sometimes|string|max:100',
+            'nama_anggota' => 'required|unique:users,nama_indo|string|max:100',
             'nama_mandarin_hanzi' => 'nullable|unique:users,nama_mandarin_hanzi|string|max:100',
             'nama_mandarin_pinyin' => 'nullable|unique:users,nama_mandarin_pinyin|string|max:100',
-            'tempat_lahir' => 'required|sometimes|string|max:50',
-            'tanggal_lahir' => 'required|sometimes',
-            'alamat' => 'required|sometimes|string',
-            'no_telpon' => 'required|sometimes|string|max:14',
+            'tempat_lahir' => 'required|string|max:50',
+            'tanggal_lahir' => 'required',
+            'alamat' => 'required|string',
+            'no_telepon' => 'required|max:14',
             'gol_darah' => 'nullable|string',
             'status_ketuhanan' => 'nullable|string',
             'status_vegetarian' => 'nullable|string',

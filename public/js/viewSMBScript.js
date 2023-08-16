@@ -63,6 +63,7 @@ function sendToEditModal(data) {
     $("#editFormTitle").text(data.nama)
     $("#editSMBModal #user_add").text(data.user_add)
     $("#editSMBModal #user_update").text(data.user_update)
+    $("#editSMBModal #created_at").text(data.created_at)
     $("#editSMBModal #nama").val(data.nama)
     $("#editSMBModal #tgl_lahir").val(data.tgl_lahir)
     $("#editSMBModal #alamat").val(data.alamat)
