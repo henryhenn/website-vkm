@@ -3,6 +3,7 @@
 use App\Http\Controllers\AcaraController;
 use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\GrupKelasController;
+use App\Http\Controllers\KelasController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\QiuDaoController;
@@ -50,7 +51,9 @@ Route::middleware('auth')->group(function () {
         Route::get('export/sekolah-minggu', [SekolahMingguController::class, 'export'])->name('sekolah-minggu.export-format');
         Route::post('import/sekolah-minggu', [SekolahMingguController::class, 'import'])->name('sekolah-minggu.import');
 
-        Route::resource('grup-kelas', GrupKelasController::class)->except('show', 'edit', 'create');
+        Route::resource('grup-kelas', GrupKelasController::class)->except(
+            'edit', 'create');
+        Route::resource('kelas', KelasController::class)->only('store', 'update', 'destroy');
     });
 
     Route::post('anggota/update-password', [AnggotaController::class, 'updatePassword'])->name('anggota.updatePassword');
@@ -65,4 +68,5 @@ Route::middleware('auth')->group(function () {
     Route::get('get-acara/{acara:id}', [AcaraController::class, 'getAcaraById']);
     Route::get('get-qiudao/{qiudao:id}', [QiuDaoController::class, 'getQiuDaoById']);
     Route::get('get-grup-kelas/{grupkelas:id}', [GrupKelasController::class, 'getGrupKelasById']);
+    Route::get('get-kelas/{kelas:id}', [KelasController::class, 'getKelasById']);
 });

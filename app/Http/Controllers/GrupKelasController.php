@@ -21,20 +21,29 @@ class GrupKelasController extends Controller
         return view('grup-kelas.index', compact('grup_kelas'));
     }
 
+    public function show(GrupKelas $grup_kela)
+    {
+        $grup_kela->load('kelas');
+
+        return view('grup-kelas.show', compact('grup_kela'));
+    }
+
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
         $this->validate($request, [
-           'grup_kelas' => 'required|string|max:100'
+            'grup_kelas' => 'required|max:100'
         ], [
             'grup_kelas.required' => 'Grup kelas wajib diisi!',
-            'grup_kelas.string' => 'Grup kelas harus berupa karakter!',
             'grup_kelas.max' => 'Grup kelas maksimal 100 karakter!'
         ]);
+        $grupKelas = $request->get('grup_kelas');
 
-        GrupKelas::create(['grup_kelas' => $request->string('grup_kelas')]);
+        foreach ($grupKelas as $data) {
+            GrupKelas::create(['grup_kelas' => $data]);
+        }
 
         return back()->with('message', 'Grup kelas berhasil ditambahkan!');
     }
@@ -48,7 +57,6 @@ class GrupKelasController extends Controller
             'grup_kelas' => 'required|string|max:100'
         ], [
             'grup_kelas.required' => 'Grup kelas wajib diisi!',
-            'grup_kelas.string' => 'Grup kelas harus berupa karakter!',
             'grup_kelas.max' => 'Grup kelas maksimal 100 karakter!'
         ]);
 

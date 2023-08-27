@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('kelas', function (Blueprint $table) {
             $table->id();
             $table->foreignId('grup_kelas_id')->constrained();
-            $table->text('kelas');
+            $table->string('kelas');
+            $table->string('user_add');
+            $table->string('user_update')->nullable();
             $table->timestamps();
         });
     }

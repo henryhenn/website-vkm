@@ -3,12 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Kelas extends Model
 {
-    protected $fillable = ['kelas'];
+    protected $fillable = ['kelas', 'grup_kelas_id'];
 
-    protected $casts = [
-        'kelas' => 'array'
-    ];
+    public function grupKelas(): BelongsTo
+    {
+        return $this->belongsTo(GrupKelas::class);
+    }
 }

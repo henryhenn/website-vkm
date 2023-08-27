@@ -2,21 +2,20 @@
 
 namespace App\Observers;
 
-use App\Models\QiuDao;
-use App\Models\SekolahMinggu;
+use App\Models\Kelas;
 use App\Traits\UsernameTrait;
 
 class KelasObserver
 {
     use UsernameTrait;
 
-    public function creating(QiuDao $qiuDao)
+    public function creating(Kelas $kela)
     {
-        $qiuDao->user_add = $this->username();
+        $kela->user_add = $this->username();
     }
 
-    public function updating(SekolahMinggu $qiuDao)
+    public function updating(Kelas $kela)
     {
-        $qiuDao->user_update = $this->username();
+        $kela->user_update = $this->username();
     }
 }

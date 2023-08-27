@@ -39,23 +39,25 @@
                                     <form action="{{route('grup-kelas.store')}}" method="post">
                                         @csrf
                                         <div class="modal-body">
-                                            <div class="row">
-                                                <div class="col mb-3">
-                                                    <div class="form-floating">
-                                                        <input
-                                                            type="text"
-                                                            class="form-control"
-                                                            id="grup_kelas"
-                                                            name="grup_kelas"
-                                                            value="{{old('grup_kelas')}}"
-                                                            placeholder=" "
-                                                            aria-describedby="grup_kelas"
-                                                        />
-                                                        <label for="grup_kelas">Grup Kelas</label>
-
+                                            <div id="new-row">
+                                                <div class="row">
+                                                    <div class="col mb-3" id="grup-kelas-row">
+                                                        <div class="input-group">
+                                                            <input type="text" class="form-control grup_kelas" required
+                                                                   name="grup_kelas[]"
+                                                                   id="grup_kelas"
+                                                                   placeholder="Nama Grup Kelas">
+                                                            <button class="btn btn-danger" id="delete-create-row"
+                                                                    type="button">
+                                                                -
+                                                            </button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                            <button class="btn btn-success" type="button" id="add-create-row">Tambah
+                                                grup kelas
+                                            </button>
                                         </div>
 
                                         <div class="modal-footer">
@@ -93,7 +95,13 @@
                                         <td>{{tgl_indo(convert_date($data->created_at))}}</td>
                                         <td>
                                             <div class="d-flex">
-                                                @can('Edit Grup Kelas')
+                                                @can('View Grup Kelas')
+                                                    <a href="{{route('grup-kelas.show', $data->id)}}"
+                                                            class="badge bg-label-primary cursor-pointer border-0">
+                                                        <i class="bx bx-show"></i>
+                                                    </a>
+                                                @endcan
+                                                    @can('Edit Grup Kelas')
                                                     <button id="showModal"
                                                             data-bs-toggle="modal"
                                                             onclick="getGrupKelasById('edit', {{$data->id}})"
@@ -177,14 +185,13 @@
                     @method('put')
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col mb-3">
+                            <div class="col">
                                 <div class="form-floating">
                                     <input
                                         type="text"
                                         class="form-control"
                                         id="grup_kelas"
                                         name="grup_kelas"
-                                        value="{{old('grup_kelas')}}"
                                         placeholder=" "
                                         aria-describedby="grup_kelas"
                                     />
@@ -203,7 +210,7 @@
                         <button type="submit" class="btn btn-primary">Update Data</button>
                     </div>
                 </form>
-                <div class="d-flex mt-4 ms-2">
+                <div class="d-flex mt-2 ms-2">
                     <p>Ditambahkan oleh: <span class="fw-bold" id="user_add"></span></p>
                     <p class="mx-3">Diupdate oleh: <span class="fw-bold" id="user_update"></span></p>
                 </div>
