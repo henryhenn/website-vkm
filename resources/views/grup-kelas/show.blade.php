@@ -2,7 +2,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
 @endpush
 
-@extends('layouts.app', ['title' => 'Daftar Kelas'])
+@extends('layouts.app', ['title' => 'Daftar Kelas: ' . $grup_kela->grup_kelas])
 
 @section('content')
     <div class="row">
@@ -12,7 +12,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex justify-content-between">
-                        <h5 class="card-title text-primary">Daftar Kelas</h5>
+                        <h5 class="card-title text-primary">Daftar Kelas: <span class="fw-bold">{{$grup_kela->grup_kelas}}</span></h5>
 
                         @can('Control Grup Kelas')
                             <button
