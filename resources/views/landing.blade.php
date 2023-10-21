@@ -81,7 +81,7 @@
         </div>
     </div>
 
-    <div class="flex flex-col gap-6 md:gap-0 md:flex-row md:space-x-4 mt-6">
+    <div class="flex flex-col gap-6 md:gap-0 md:flex-row md:space-x-4 mt-6 justify-between">
         @forelse($acara as $data)
             <div class="acara-card">
                 @if($data->image)
@@ -174,7 +174,7 @@
                     </div>
                 </div>
             </div>
-            @empty
+        @empty
             <h3 class="text-3xl font-bold text-center">Tidak ada acara terbaru.</h3>
         @endforelse
         <div

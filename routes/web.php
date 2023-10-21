@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AbsensiController;
 use App\Http\Controllers\AcaraController;
 use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\GrupKelasController;
@@ -54,6 +55,8 @@ Route::middleware('auth')->group(function () {
         Route::resource('grup-kelas', GrupKelasController::class)->except(
             'edit', 'create');
         Route::resource('kelas', KelasController::class)->only('store', 'update', 'destroy');
+
+        Route::resource('absensi', AbsensiController::class)->parameters(['absensi' => 'date']);
     });
 
     Route::post('anggota/update-password', [AnggotaController::class, 'updatePassword'])->name('anggota.updatePassword');
@@ -69,4 +72,5 @@ Route::middleware('auth')->group(function () {
     Route::get('get-qiudao/{qiudao:id}', [QiuDaoController::class, 'getQiuDaoById']);
     Route::get('get-grup-kelas/{grupkelas:id}', [GrupKelasController::class, 'getGrupKelasById']);
     Route::get('get-kelas/{kelas:id}', [KelasController::class, 'getKelasById']);
+    Route::get('get-absensi/{date}', [AbsensiController::class, 'getAbsensiByDate']);
 });

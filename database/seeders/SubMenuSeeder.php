@@ -116,6 +116,15 @@ class SubMenuSeeder extends Seeder
                     'user_update' => 'admin'
                 ],
                 [
+                    'menu_id' => 3,
+                    'sub_menu' => 'Absensi',
+                    'url' => '/data/absensi',
+                    'icon' => 'bx bx-user-check',
+                    'active' => 1,
+                    'user_add' => 'admin',
+                    'user_update' => 'admin'
+                ],
+                [
                     'menu_id' => 4,
                     'sub_menu' => 'Album',
                     'url' => '/lagu/album',

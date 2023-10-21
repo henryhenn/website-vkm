@@ -2,12 +2,14 @@
 
 namespace App\Providers;
 
+use App\Models\Absensi;
 use App\Models\Acara;
 use App\Models\GrupKelas;
 use App\Models\Kelas;
 use App\Models\QiuDao;
 use App\Models\SekolahMinggu;
 use App\Models\User;
+use App\Observers\AbsensiObserver;
 use App\Observers\AcaraObserver;
 use App\Observers\AnggotaObserver;
 use App\Observers\GrupKelasObserver;
@@ -43,6 +45,7 @@ class EventServiceProvider extends ServiceProvider
         SekolahMinggu::observe(SekolahMingguObserver::class);
         GrupKelas::observe(GrupKelasObserver::class);
         Kelas::observe(KelasObserver::class);
+        Absensi::observe(AbsensiObserver::class);
     }
 
     /**

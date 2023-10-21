@@ -19,10 +19,15 @@ class SekolahMingguController extends Controller
 
         $anak = DB::table('sekolah_minggu')
             ->orderBy('nama')
-            ->select('id', 'nama', 'telp', 'nama_ortu', 'created_at', 'kelas_cth')
+            ->select('sekolah_minggu.id', 'nama', 'telp', 'nama_ortu', 'sekolah_minggu.created_at', 'kelas_id', 'kelas.kelas', 'grup_kelas.grup_kelas')
+            ->join('kelas', 'sekolah_minggu.kelas_id', 'kelas.id')
+            ->join('grup_kelas', 'kelas.grup_kelas_id', 'grup_kelas.id')
             ->paginate(100);
+        $kelas = DB::table('kelas')
+            ->select('id', 'kelas')
+            ->get();
 
-        return view('smb.index', compact('anak'));
+        return view('smb.index', compact('anak', 'kelas'));
     }
 
     public function store(SekolahMingguRequest $request)

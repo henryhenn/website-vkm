@@ -118,18 +118,19 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="col mb-3">
-                                                        <div class="form-floating">
-                                                            <input
-                                                                type="text"
-                                                                class="form-control"
-                                                                id="kelas_cth"
-                                                                name="kelas_cth"
-                                                                placeholder=" "
-                                                                value="{{old('kelas_cth')}}"
-                                                                aria-describedby="kelas_cth"
-                                                            >
-                                                            <label for="kelas_cth">Kelas</label>
-                                                        </div>
+                                                        <select
+                                                            class="form-control"
+                                                            id="kelas_id"
+                                                            name="kelas_id"
+                                                        >
+                                                            <option value="" disabled selected>--KELAS--</option>
+                                                            @forelse($kelas as $kelas)
+                                                                <option
+                                                                    value="{{$kelas->id}}">{{$kelas->kelas}}</option>
+                                                            @empty
+                                                                <option disabled>Tidak ada data kelas.</option>
+                                                            @endforelse
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <div class="row">
@@ -244,7 +245,7 @@
                                         <td>{{$data->nama}}</td>
                                         <td>{{$data->telp}}</td>
                                         <td>{{$data->nama_ortu}}</td>
-                                        <td>{{$data->kelas_cth}}</td>
+                                        <td>{{$data->kelas . " ($data->grup_kelas)"}}</td>
                                         <td>
                                             <div class="d-flex">
                                                 @can('View Sekolah Minggu')
@@ -404,18 +405,14 @@
                             </div>
                             <div class="row">
                                 <div class="col mb-3">
-                                    <div class="form-floating">
-                                        <input
-                                            type="text"
-                                            class="form-control"
-                                            id="kelas_cth"
-                                            name="kelas_cth"
-                                            placeholder=" "
-                                            value="{{old('kelas_cth')}}"
-                                            aria-describedby="kelas_cth"
-                                        >
-                                        <label for="kelas_cth">Kelas</label>
-                                    </div>
+                                    <select
+                                        class="form-control"
+                                        id="kelas_id"
+                                        name="kelas_id"
+                                    >
+                                        <option value="" disabled selected>--KELAS--</option>
+                                        <option value="{{$kelas->id}}">{{$kelas->kelas}}</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="row">
