@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class SekolahMinggu extends Model
 {
@@ -20,9 +20,9 @@ class SekolahMinggu extends Model
         'created_at' => 'date:d-m-Y'
     ];
 
-    public function absensi(): HasMany
+    public function absensi(): BelongsToMany
     {
-        return $this->hasMany(Absensi::class);
+        return $this->belongsToMany(Absensi::class);
     }
 
     public function kelas(): BelongsTo

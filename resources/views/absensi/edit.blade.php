@@ -1,9 +1,8 @@
-@php use function App\Helpers\convert_date;use function App\Helpers\tgl_indo; @endphp
 @push('dataTablesCSS')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
 @endpush
 
-@extends('layouts.app', ['title' => 'Edit Absensi'])
+@extends('layouts.app', ['title' => 'Edit Absensi Tanggal: '])
 
 @section('content')
     <div class="row">
@@ -12,24 +11,23 @@
 
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title text-primary">Edit
-                        Absensi: {{tgl_indo(convert_date($absen->first()->tanggal))}}</h5>
+                    <h5 class="card-title text-primary">Edit Absensi <span
+                            class="fw-bold">{{\App\Helpers\tgl_indo($absensi->first()->tanggal)}}</span></h5>
                     @foreach($errors->all() as $error)
                         <li class="text-danger">{{$error}}</li>
                     @endforeach
                     <div class="row mt-4">
                         <div class="table-responsive">
-                            <form action="{{route('absensi.update', $absen->first()->tanggal)}}" method="post">
+                            <form action="{{route('absensi.store')}}" method="post">
                                 @csrf
-                                @method('patch')
                                 <div class="row mb-3">
                                     <div class="col-4">
                                         <label for="tanggal">Tanggal</label>
-                                        <input type="date" name="tanggal" value="{{$absen->first()->tanggal}}" readonly
-                                               id="tanggal" class="form-control">
+                                        <input type="date" name="tanggal" readonly
+                                               value="{{$absensi->first()->tanggal}}" id="tanggal" class="form-control">
                                     </div>
                                 </div>
-                                <table class="display" id="editAbsensiTable" width="100%">
+                                <table class="display" id="absensiTable" width="100%">
                                     <thead>
                                     <tr>
                                         <th>ID</th>
@@ -38,15 +36,16 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($siswa as $siswa)
-                                        @foreach($absen as $data)
+                                    @foreach($absensi as $data)
+                                        @foreach($data->sekolahMinggu as $siswa)
                                             <tr>
                                                 <td>{{$siswa->id}}</td>
                                                 <td>{{$siswa->nama}}</td>
                                                 <td>
                                                     <input type="checkbox" name="sekolah_minggu_id[]"
-                                                           @checked($data->sekolahMinggu->id == $siswa->id) id="sekolah_minggu_id[]"
-                                                           class="input-check" value="{{$data->sekolahMinggu->id}}">
+                                                           id="sekolah_minggu_id[]"
+                                                           @checked($siswa->id == $data->sekolahMinggu->id)
+                                                           class="input-check" value="{{$siswa->id}}">
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -54,7 +53,7 @@
                                     </tbody>
                                 </table>
 
-                                <button type="submit" class="btn btn-primary float-end mt-3">Update</button>
+                                <button type="submit" class="btn btn-primary float-end mt-3">Submit</button>
                             </form>
                         </div>
                     </div>
@@ -66,9 +65,5 @@
 
 @push('scripts')
     <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            new DataTable("#editAbsensiTable")
-        })
-    </script>
+    <script src="{{asset('js/viewAbsensiScript.js')}}"></script>
 @endpush

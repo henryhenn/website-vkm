@@ -13,7 +13,6 @@ class AbsensiController extends Controller
     public function index()
     {
         $absensi = DB::table('absensis')
-            ->select('tanggal')
             ->distinct()
             ->get();
 
@@ -30,9 +29,9 @@ class AbsensiController extends Controller
         return view('absensi.create', compact('siswa'));
     }
 
-    public function show(string $date)
+    public function show(string $id)
     {
-        $absensi = $this->getAbsensi($date);
+        $absensi = Absensi::find($id)->first();
 
         return view('absensi.detail', compact('absensi'));
     }
@@ -41,25 +40,26 @@ class AbsensiController extends Controller
     {
         $this->validateRequest($request);
 
+        $absensis = Absensi::create([
+            'tanggal' => $request->date('tanggal')
+        ]);
+
         foreach ($request->get('sekolah_minggu_id') as $siswa) {
-            Absensi::create([
-                'sekolah_minggu_id' => $siswa,
-                'tanggal' => $request->date('tanggal')
-            ]);
+            $absensis->sekolahMinggu()->attach($siswa);
         }
 
         return redirect()->route('absensi.index')->with('message', 'Absensi berhasil ditambahkan!');
     }
 
-    public function edit(string $date)
+    public function edit(string $id)
     {
-        $siswa = SekolahMinggu::query()
-            ->with('absensi')
-            ->select('id', 'nama')
+        $absensi = Absensi::query()
+            ->find($id)
+            ->with('sekolahMinggu')
             ->get();
-//        $absen = Absensi::with('sekolahMinggu')->where('tanggal', $date)->get();
+//        dd($absensi);
 
-        return view('absensi.edit', compact('siswa'));
+        return view('absensi.edit', compact('absensi'));
     }
 
     public function update(Request $request)
@@ -87,22 +87,12 @@ class AbsensiController extends Controller
         return back()->with('message', 'Absensi berhasil dihapus!');
     }
 
-    public function getAbsensiByDate(string $date)
+    protected function getAbsensiById(string $id)
     {
-        $absensi = $this->getAbsensi($date);
-
         return response()->json([
-            'data' => $absensi,
+            'data' => Absensi::find($id)->first(),
             'status' => Response::HTTP_OK
         ]);
-    }
-
-    protected function getAbsensi(string $date): null|object
-    {
-        return Absensi::query()
-            ->with('sekolahMinggu')
-            ->where('tanggal', $date)
-            ->get();
     }
 
     protected function validateRequest(Request $request): void

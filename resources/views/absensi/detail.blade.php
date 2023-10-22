@@ -14,7 +14,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title text-primary">Detail
-                        Absensi: {{tgl_indo(convert_date($absensi->first()->tanggal))}}</h5>
+                        Absensi: {{tgl_indo(convert_date($absensi->tanggal))}}</h5>
 
                     <div class="row mt-3">
                         <div class="table-responsive">
@@ -22,25 +22,16 @@
                                 <thead>
                                 <tr>
                                     <th>Nama</th>
-                                    <th>Aksi</th>
+                                    <th>Status</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($absensi as $data)
+                                @foreach($absensi->sekolahMinggu as $data)
                                     <tr>
-                                        <td>{{$data->sekolahMinggu->nama}}</td>
+                                        <td>{{$data->nama}}</td>
                                         <td>
-                                            <div class="d-flex">
-                                                @can('Delete Absensi')
-                                                    <button id="showModal"
-                                                            data-bs-toggle="modal"
-                                                            data-bs-target="#deleteAbsensiModal"
-                                                            onclick="getAbsensiByDate('delete', {{$data->sekolahMinggu->id}})"
-                                                            class="badge bg-label-danger cursor-pointer border-0">
-                                                        <i class="bx bx-trash"></i>
-                                                    </button>
-                                                @endcan
-                                            </div>
+                                            <input type="checkbox" name="sekolah_minggu_id[]" id="sekolah_minggu_id[]"
+                                                   class="input-check" checked readonly>
                                         </td>
                                     </tr>
                                 @endforeach

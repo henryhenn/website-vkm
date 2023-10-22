@@ -72,5 +72,5 @@ Route::middleware('auth')->group(function () {
     Route::get('get-qiudao/{qiudao:id}', [QiuDaoController::class, 'getQiuDaoById']);
     Route::get('get-grup-kelas/{grupkelas:id}', [GrupKelasController::class, 'getGrupKelasById']);
     Route::get('get-kelas/{kelas:id}', [KelasController::class, 'getKelasById']);
-    Route::get('get-absensi/{date}', [AbsensiController::class, 'getAbsensiByDate']);
+    Route::get('get-absensi/{id}', [AbsensiController::class, 'getAbsensi']);
 });

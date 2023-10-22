@@ -40,13 +40,13 @@
                                         <td>
                                             <div class="d-flex">
                                                 @can('View Absensi')
-                                                    <a href="{{route('absensi.show', $data->tanggal)}}"
+                                                    <a href="{{route('absensi.show', $data->id)}}"
                                                        class="badge bg-label-primary">
                                                         <i class="bx bx-show"></i>
                                                     </a>
                                                 @endcan
                                                 @can('Edit Absensi')
-                                                    <a href="{{route('absensi.edit', $data->tanggal)}}"
+                                                    <a href="{{route('absensi.edit', $data->id)}}"
                                                        class="badge bg-label-warning mx-2">
                                                         <i class="bx bx-edit"></i>
                                                     </a>
@@ -55,7 +55,7 @@
                                                     <button id="showModal"
                                                             data-bs-toggle="modal"
                                                             data-bs-target="#deleteAbsensiModal"
-                                                            onclick="getAbsensiByDate('{{$data->tanggal}}')"
+                                                            onclick="getAbsensiById('{{$data->id}}')"
                                                             class="badge bg-label-danger cursor-pointer border-0">
                                                         <i class="bx bx-trash"></i>
                                                     </button>

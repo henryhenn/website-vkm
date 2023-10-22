@@ -2,9 +2,9 @@ $(document).ready(function () {
     new DataTable("#absensiTable")
 })
 
-function getAbsensiByDate(date) {
+function getAbsensiById(id) {
     $.ajax({
-        url: `/get-absensi/${date}`,
+        url: `/get-absensi/${id}`,
         type: 'get',
         dataType: 'json',
         success: function ({data}) {
@@ -14,6 +14,6 @@ function getAbsensiByDate(date) {
 }
 
 function sendToDeleteModal(data) {
-    $("#tglAbsensi").text(data[0].tanggal)
-    $("#deleteForm").attr("action", () => `/data/absensi/${data[0].tanggal}`)
+    $("#tglAbsensi").text(data.id)
+    $("#deleteForm").attr("action", () => `/data/absensi/${data.id}`)
 }
