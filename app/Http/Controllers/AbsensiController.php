@@ -57,7 +57,6 @@ class AbsensiController extends Controller
             ->find($id)
             ->with('sekolahMinggu')
             ->get();
-//        dd($absensi);
 
         return view('absensi.edit', compact('absensi'));
     }

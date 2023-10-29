@@ -29,6 +29,7 @@ class SekolahMingguRequest extends FormRequest
             'telp' => 'required|max:14',
             'nama_ortu' => 'required|string|max:100',
             'status_qiu_dao' => 'nullable',
+            'jenis_kelamin' => 'required|string|in:Laki-laki,Perempuan'
         ];
     }
 
@@ -46,6 +47,9 @@ class SekolahMingguRequest extends FormRequest
             'telp.required' => 'No. Telepon wajib diisi!',
             'telp.max' => 'No. Telepon maksimal 14 karakter!',
             'status_qiu_dao.required' => 'Status Qiu Dao wajib diisi!',
+            'jenis_kelamin.required' => 'Jenis Kelamin wajib diisi!',
+            'jenis_kelamin.string' => 'Value Jenis Kelamin tidak valid!',
+            'jenis_kelamin.in' => 'Value Jenis Kelamin tidak valid!',
         ];
     }
 }

@@ -34,7 +34,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($siswa as $data)
+                                    @forelse($siswa as $data)
                                         <tr>
                                             <td>{{$data->id}}</td>
                                             <td>{{$data->nama}}</td>
@@ -43,7 +43,15 @@
                                                        class="input-check" value="{{$data->id}}">
                                             </td>
                                         </tr>
-                                    @endforeach
+                                    @empty
+                                        <tr>
+                                            <td colspan="3">
+                                                <h3 class="text-center">Tidak ada data anak Sekolah Minggu</h3>
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    @endforelse
                                     </tbody>
                                 </table>
 

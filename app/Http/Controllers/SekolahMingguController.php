@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Exports\FormatTableSekolahMingguExport;
 use App\Http\Requests\SekolahMingguRequest;
 use App\Imports\SekolahMingguImport;
+use App\Models\Kelas;
 use App\Models\SekolahMinggu;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -27,7 +28,7 @@ class SekolahMingguController extends Controller
             ->select('id', 'kelas')
             ->get();
 
-        return view('smb.index', compact('anak', 'kelas'));
+        return $kelas->count() != 0 ? view('smb.index', compact('anak', 'kelas')) : to_route('grup-kelas.index')->with('error', 'Silakan tambahkan Kelas terlebih dulu!');
     }
 
     public function store(SekolahMingguRequest $request)
@@ -39,9 +40,27 @@ class SekolahMingguController extends Controller
         return back()->with('message', 'Data Sekolah Minggu berhasil ditambahkan!');
     }
 
-    public function show(SekolahMinggu $sekolah_minggu)
+    public function show(string $id)
     {
         $this->middleware('permission:View Sekolah Minggu');
+
+        $sekolah_minggu = DB::table('sekolah_minggu')
+            ->join('mst_value', 'sekolah_minggu.status_qiu_dao', '=', 'mst_value.id')
+            ->join('kelas', 'sekolah_minggu.kelas_id', '=', 'kelas.id')
+            ->select(
+                'nama',
+                'tgl_lahir',
+                'alamat',
+                'jenis_kelamin',
+                'telp',
+                'nama_ortu',
+                'sekolah_minggu.user_add',
+                'sekolah_minggu.user_update',
+                'desc',
+                'kelas',
+                'sekolah_minggu.created_at',
+                'sekolah_minggu.updated_at')
+            ->first();
 
         return view('smb.detail', compact('sekolah_minggu'));
     }

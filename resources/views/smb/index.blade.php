@@ -88,6 +88,31 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="col mb-3">
+                                                        <label for="jenis_kelamin" class="d-block">Jenis Kelamin</label>
+                                                        <div class="mt-2 d-flex">
+                                                            <div class="me-3">
+                                                                <input
+                                                                    class="form-check-input mt-0"
+                                                                    type="radio"
+                                                                    name="jenis_kelamin"
+                                                                    value="Laki-laki"
+                                                                />
+                                                                <span>Laki-laki</span>
+                                                            </div>
+                                                            <div>
+                                                                <input
+                                                                    class="form-check-input mt-0"
+                                                                    type="radio"
+                                                                    name="jenis_kelamin"
+                                                                    value="Perempuan"
+                                                                />
+                                                                <span>Perempuan</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col mb-3">
                                                         <div class="form-floating">
                                                 <textarea
                                                     class="form-control"

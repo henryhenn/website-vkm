@@ -4,6 +4,6 @@
     </div>
 @elseif(session('error'))
     <div class="alert alert-danger" role="alert" id="alert-message">
-        {{session('message')}}
+        {{session('error')}}
     </div>
 @endif
